@@ -1,102 +1,124 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
-import vortex from "@assets/vortex.png";
+import vortex from "@assets/vortex.webp";
 
-const Header = () => {
-	const [isDarkMode, setIsDarkMode] = useState(false);
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+interface HeaderProps {
+  darkMood: boolean;
+  setDarkMood: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-	const toggleDarkMode = () => {
-		setIsDarkMode(!isDarkMode);
-		// يمكنك هنا إضافة منطق لتغيير الوضع الليلي/النهاري
-	};
+const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const toggleMenu = () => {
-		setIsMenuOpen(!isMenuOpen);
-	};
+  const toggleDarkMode = () => {
+    setDarkMood(!darkMood);
+    console.log(darkMood);
+  };
 
-	return (
-		<motion.nav
-			className="navBar !z-[9999] fixed h-[100px] top-0 backdrop-blur-xl bg-black/20 w-full flex items-center justify-center"
-			initial={{ y: "-150px" }}
-			animate={{
-				y: 0,
-				transition: {
-					duration: 0.5,
-				},
-			}}
-		>
-			<div className="container flex justify-around items-center">
-				<div className="logo flex flex-col items-center justify-center">
-					<img
-						src={vortex}
-						alt="vortex logo"
-						width={"60px"}
-						height={"60px"}
-						className="w-[60px] h-[60px]"
-					/>
-				</div>
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-				{/* Navigation Links */}
-				<nav
-					className={`links text-white flex gap-10 ${
-						isMenuOpen
-							? "flex flex-col absolute top-[100px] left-0 w-full bg-black/90 backdrop-blur-xl py-4 px-8"
-							: "hidden md:flex"
-					}`}
-				>
-					<a
-						href="#"
-						className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-					>
-						الرئيسية
-					</a>
-					<a
-						href="#"
-						className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-					>
-						من نحن
-					</a>
-					<a
-						href="#"
-						className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-					>
-						خدماتنا
-					</a>
-					<a
-						href="#"
-						className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-					>
-						اعمالنا
-					</a>
-					<a
-						href="#"
-						className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-					>
-						تواصل معنا
-					</a>
-				</nav>
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const previousScrollY = useRef(0);
 
-				{/* Dark/Light Mode Toggle */}
-				<div className="mood flex items-center">
-					<button
-						onClick={toggleDarkMode}
-						className="text-white text-2xl cursor-pointer"
-					>
-						{isDarkMode ? <FaMoon /> : <FaSun />}
-					</button>
-				</div>
-				{/* Hamburger Menu Icon */}
-				<div
-					className="md:hidden text-white text-2xl cursor-pointer"
-					onClick={toggleMenu}
-				>
-					{isMenuOpen ? <FaTimes /> : <FaBars />}
-				</div>
-			</div>
-		</motion.nav>
-	);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = previousScrollY.current;
+    previousScrollY.current = latest;
+    if (previous < latest && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
+  return (
+    <motion.nav
+      className="navBar !z-[9999] fixed h-[100px] top-0 backdrop-blur-xl bg-black/50 w-full flex items-center justify-center"
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{
+        duration: 0.35,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="container flex justify-around items-center">
+        <a href="#" className="logo flex flex-col items-center justify-center">
+          <img
+            src={vortex}
+            alt="vortex logo"
+            width={"60px"}
+            height={"60px"}
+            className="w-[60px] h-[60px] cursor-pointer"
+          />
+        </a>
+
+        {/* Navigation Links */}
+        <nav
+          className={`links text-white flex gap-10 ${
+            isMenuOpen
+              ? "flex flex-col absolute top-[100px] left-0 w-full bg-black/90 backdrop-blur-xl py-4 px-8"
+              : "hidden md:flex"
+          }`}
+        >
+          <a
+            href="#"
+            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
+          >
+            الرئيسية
+          </a>
+          <a
+            href="#"
+            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
+          >
+            من نحن
+          </a>
+          <a
+            href="#"
+            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
+          >
+            خدماتنا
+          </a>
+          <a
+            href="#"
+            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
+          >
+            اعمالنا
+          </a>
+          <a
+            href="#"
+            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
+          >
+            تواصل معنا
+          </a>
+        </nav>
+
+        {/* Dark/Light Mode Toggle */}
+        <div className="mood flex items-center">
+          <button
+            onClick={toggleDarkMode}
+            className={`text-white duration-200 text-2xl cursor-pointer ${
+              darkMood ? "hover:text-orange-600" : "hover:text-blue-900"
+            }`}
+          >
+            {darkMood ? <FaSun /> : <FaMoon />}
+          </button>
+        </div>
+        {/* Hamburger Menu Icon */}
+        <div
+          className="md:hidden text-white text-2xl cursor-pointer"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+      </div>
+    </motion.nav>
+  );
 };
 
 export default Header;

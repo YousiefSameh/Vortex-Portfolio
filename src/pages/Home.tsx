@@ -1,7 +1,7 @@
-import Contact from '@components/portfolio/Contact'
-import Hero from '@components/portfolio/Hero'
-import Projects from '@components/portfolio/Projects'
-import Services from '@components/portfolio/Services'
+import Hero from "@components/portfolio/Hero";
+import Contact from "@components/portfolio/Contact";
+import Projects from "@components/portfolio/Projects";
+import Services from "@components/portfolio/Services";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       <Projects />
       <Contact />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
