@@ -3,8 +3,9 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import svgr from "vite-plugin-svgr";
 import path from "path";
+import vitePluginCompression from "vite-plugin-compression";
+import imageminLoader from 'vite-plugin-imagemin';
 
-// https://vite.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
@@ -20,5 +21,35 @@ export default defineConfig({
       "@services": path.resolve(__dirname, "./src/services"),
     },
   },
-	plugins: [react(), tailwindcss(), svgr()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    svgr(),
+    vitePluginCompression({
+      algorithm: 'gzip',
+      ext: '.gz',
+    }),
+    imageminLoader({
+      gifsicle: { optimizationLevel: 7, interlaced: false },
+      optipng: { optimizationLevel: 7 },
+      mozjpeg: { quality: 20 },
+      pngquant: { quality: [0.8, 0.9], speed: 4 },
+      svgo: {
+        plugins: [
+          { name: 'removeViewBox' },
+          { name: 'removeEmptyAttrs', active: false }
+        ]
+      }
+    })
+  ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          vendor: ['lodash', 'moment'],
+        },
+      },
+    },
+  },
 });

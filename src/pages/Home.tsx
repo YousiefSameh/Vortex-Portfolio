@@ -1,17 +1,19 @@
-import Contact from '@components/portfolio/Contact'
-import Hero from '@components/portfolio/Hero'
-import Projects from '@components/portfolio/Projects'
-import Services from '@components/portfolio/Services'
+import { Suspense, lazy } from 'react';
+
+const Contact = lazy(() => import('@components/portfolio/Contact'));
+const Hero = lazy(() => import('@components/portfolio/Hero'));
+const Projects = lazy(() => import('@components/portfolio/Projects'));
+const Services = lazy(() => import('@components/portfolio/Services'));
 
 const Home = () => {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <Hero />
       <Services />
       <Projects />
       <Contact />
-    </>
-  )
+    </Suspense>
+  );
 }
 
-export default Home
+export default Home;

@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { loadFull } from "tsparticles";
 import type { Engine } from "@tsparticles/engine";
 
 interface InitParticlesEngine {
@@ -11,6 +10,7 @@ const useParticles = () => {
 
 	const initParticlesEngine: InitParticlesEngine = useCallback(
 		async (engine: Engine) => {
+			const { loadFull } = await import("tsparticles");
 			await loadFull(engine);
 		},
 		[]
@@ -19,11 +19,8 @@ const useParticles = () => {
 	useEffect(() => {
 		const initEngine = async () => {
 			try {
-				await initParticlesEngine(
-					await import("@tsparticles/engine").then(
-						({ tsParticles }) => tsParticles
-					)
-				);
+				const { tsParticles } = await import("@tsparticles/engine");
+				await initParticlesEngine(tsParticles);
 				setInit(true);
 			} catch (error) {
 				console.error("Error initializing particles engine:", error);
@@ -32,6 +29,7 @@ const useParticles = () => {
 
 		initEngine();
 	}, [initParticlesEngine]);
+
 	return { init };
 };
 

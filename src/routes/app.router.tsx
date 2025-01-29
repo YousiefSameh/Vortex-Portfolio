@@ -1,15 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import MainLayouts from "@templates/MainLayouts";
-import Home from "@pages/Home";
+import { Suspense, lazy } from "react";
+
+const MainLayouts = lazy(() => import("@templates/MainLayouts"));
+const Home = lazy(() => import("@pages/Home"));
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <MainLayouts />,
+		element: (
+			<Suspense fallback={<div>Loading...</div>}>
+				<MainLayouts />
+			</Suspense>
+		),
 		children: [
 			{
 				index: true,
-				element: <Home />,
+				element: (
+					<Suspense fallback={<div>Loading...</div>}>
+						<Home />
+					</Suspense>
+				),
 			},
 		],
 	},
