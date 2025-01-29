@@ -10,10 +10,10 @@
 
 html {
   font-family: "Tajawal", sans-serif;
-  direction: rtl;
 }
 
 * {
+  direction: rtl;
   z-index: 1000;
 }
 
