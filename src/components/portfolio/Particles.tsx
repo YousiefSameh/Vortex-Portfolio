@@ -1,55 +1,24 @@
-import { useCallback, useEffect, useState } from "react";
+import useParticles from "@hooks/useParticles";
 import Particles from "@tsparticles/react";
-import { loadFull } from "tsparticles";
-import type { Engine } from "@tsparticles/engine";
-
-interface InitParticlesEngine {
-	(engine: Engine): Promise<void>;
-}
 
 export default function ParticleBackground() {
-	const [init, setInit] = useState(false);
-
-	const initParticlesEngine: InitParticlesEngine = useCallback(
-		async (engine: Engine) => {
-			await loadFull(engine);
-		},
-		[]
-	);
-
-	useEffect(() => {
-		const initEngine = async () => {
-			try {
-				await initParticlesEngine(
-					await import("@tsparticles/engine").then(
-						({ tsParticles }) => tsParticles
-					)
-				);
-				setInit(true);
-			} catch (error) {
-				console.error("Error initializing particles engine:", error);
-			}
-		};
-
-		initEngine();
-	}, [initParticlesEngine]);
-
+	const { init } = useParticles();
 	return (
 		<>
 			{init && (
 				<Particles
 					id="tsparticles"
-          className="!z-10 absolute w-full h-full"
+					className="!z-10 absolute w-full h-full"
 					options={{
 						background: {
-              position: "",
+							position: "",
 							color: {
 								value: "#000",
 							},
 						},
-            fullScreen: {
-              enable: false
-            },
+						fullScreen: {
+							enable: false,
+						},
 						fpsLimit: 120,
 						interactivity: {
 							events: {
@@ -96,7 +65,7 @@ export default function ParticleBackground() {
 								density: {
 									enable: true,
 									width: 1100,
-                  height: 1100
+									height: 1100,
 								},
 								value: 160,
 							},
