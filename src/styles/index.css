@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --main-color: #00c3b6;
   --hover-color: #02766e;
   --light-color: #ffffff;
-  --dark-color: #121212;
+  --dark-color: #080808;
 }
 
 html {

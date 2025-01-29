@@ -88,7 +88,7 @@ const Contact = () => {
             name="fullname"
             placeholder="أكتب الأسم الكامل هنا ..."
             autoComplete="off"
-            className="w-full bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl placeholder:text-white text-white outline-none font-bold rounded-2xl focus:border-white"
+            className="w-full bg-[#dedede] :bg-[#dedede] dark:bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white"
             required
             disabled={isSubmitting}
           />
@@ -106,7 +106,7 @@ const Contact = () => {
             name="email"
             placeholder="أكتب البريد الالكتروني هنا ..."
             autoComplete="off"
-            className="w-full bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl placeholder:text-white text-white outline-none font-bold rounded-2xl focus:border-white"
+            className="w-full bg-[#dedede] :bg-[#dedede] :bg-[#dedede] dark:bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white"
             required
             disabled={isSubmitting}
           />
@@ -128,7 +128,7 @@ const Contact = () => {
               name="whatsapp"
               placeholder="أكتب رقم الهاتف هنا ..."
               autoComplete="off"
-              className="w-full bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl placeholder:text-white text-white outline-none font-bold rounded-2xl focus:border-white"
+              className="w-full bg-[#dedede] :bg-[#dedede] :bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white"
               disabled={isSubmitting}
             />
           </div>
@@ -145,7 +145,7 @@ const Contact = () => {
               name="telephone"
               placeholder="أكتب رقم الهاتف هنا ..."
               autoComplete="off"
-              className="w-full bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl placeholder:text-white text-white outline-none font-bold rounded-2xl focus:border-white"
+              className="w-full bg-[#dedede] :bg-[#dedede] :bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white"
               disabled={isSubmitting}
             />
           </div>
@@ -163,7 +163,7 @@ const Contact = () => {
             rows={10}
             placeholder="أكتب رسالتك هنا ..."
             autoComplete="off"
-            className="w-full bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl placeholder:text-white text-white outline-none font-bold rounded-2xl focus:border-white"
+            className="w-full bg-[#dedede] :bg-[#dedede] dark:bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white"
             required
             disabled={isSubmitting}
           />

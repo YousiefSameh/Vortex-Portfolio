@@ -45,7 +45,11 @@ const Projects = () => {
             className="project bg-[#222] rounded-2xl"
           >
             <div className="image h-[140px] relative">
-              <span className="w-full h-full bg-white absolute top-0 left-0 rounded-t-2xl"></span>
+              <img
+                src="../../assets/hello.jpeg"
+                alt="hello"
+                className="w-full h-full bg-white absolute top-0 left-0 rounded-t-2xl"
+              />
             </div>
             <div className="text p-3">
               <h4 className="text-[22px] text-white font-bold">

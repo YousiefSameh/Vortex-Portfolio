@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import vortex from "@assets/vortex.png";
-import rightArrow from "@assets/right-arrow.png";
-import phone from "@assets/phone.png";
+import vortex from "@assets/vortex.webp";
+import rightArrow from "@assets/right-arrow.webp";
+import phone from "@assets/phone.webp";
 import Particles from "./Particles";
 
 const variants = {

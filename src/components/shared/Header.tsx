@@ -1,15 +1,19 @@
 import { useState, useRef } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
-import vortex from "@assets/vortex.png";
+import vortex from "@assets/vortex.webp";
 
-const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+interface HeaderProps {
+  darkMood: boolean;
+  setDarkMood: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // يمكنك هنا إضافة منطق لتغيير الوضع الليلي/النهاري
+    setDarkMood(!darkMood);
+    console.log(darkMood);
   };
 
   const toggleMenu = () => {
@@ -32,7 +36,7 @@ const Header = () => {
 
   return (
     <motion.nav
-      className="navBar !z-[9999] fixed h-[100px] top-0 backdrop-blur-xl bg-black/20 w-full flex items-center justify-center"
+      className="navBar !z-[9999] fixed h-[100px] top-0 backdrop-blur-xl bg-black/50 w-full flex items-center justify-center"
       variants={{
         visible: { y: 0 },
         hidden: { y: "-100%" },
@@ -44,15 +48,15 @@ const Header = () => {
       }}
     >
       <div className="container flex justify-around items-center">
-        <div className="logo flex flex-col items-center justify-center">
+        <a href="#" className="logo flex flex-col items-center justify-center">
           <img
             src={vortex}
             alt="vortex logo"
             width={"60px"}
             height={"60px"}
-            className="w-[60px] h-[60px]"
+            className="w-[60px] h-[60px] cursor-pointer"
           />
-        </div>
+        </a>
 
         {/* Navigation Links */}
         <nav
@@ -98,9 +102,11 @@ const Header = () => {
         <div className="mood flex items-center">
           <button
             onClick={toggleDarkMode}
-            className="text-white text-2xl cursor-pointer"
+            className={`text-white duration-200 text-2xl cursor-pointer ${
+              darkMood ? "hover:text-orange-600" : "hover:text-blue-900"
+            }`}
           >
-            {isDarkMode ? <FaMoon /> : <FaSun />}
+            {darkMood ? <FaSun /> : <FaMoon />}
           </button>
         </div>
         {/* Hamburger Menu Icon */}
