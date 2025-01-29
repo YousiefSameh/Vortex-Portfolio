@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --main-color: #00c3b6;
+  --hover-color: #02766e;
+  --light-color: #ffffff;
+  --dark-color: #080808;
+}
+
+html {
+  font-family: "Tajawal", sans-serif;
+}
+
+* {
+  direction: rtl;
+  z-index: 1000;
+}
+
+@layer base {
+  .primary-btn {
+    @apply text-white flex text-sm md:!text-lg items-center gap-2 md:py-4 py-3 md:px-6 px-4 bg-[var(--main-color)] hover:bg-[var(--hover-color)] justify-center relative cursor-pointer overflow-hidden transition-all;
+  }
+  .primary-btn::before {
+    @apply content-[''] absolute top-[2px] left-[2px] bottom-[2px] w-1/2;
+  }
+  .primary-btn span:nth-child(1) {
+    @apply absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent to-white animate-[animationSnake1_2s_linear_infinite];
+  }
+  .primary-btn span:nth-child(2) {
+    @apply absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-transparent to-white animate-[animationSnake2_2s_linear_1s_infinite];
+  }
+  .primary-btn span:nth-child(3) {
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-l from-transparent to-white animate-[animationSnake3_2s_linear_infinite];
+  }
+  .primary-btn span:nth-child(4) {
+    @apply absolute top-0 left-0 w-[2px] h-full bg-gradient-to-t from-transparent to-white animate-[animationSnake4_2s_linear_1s_infinite];
+  }
+  .primary-btn:hover span:nth-child(1) {
+    animation-duration: 500ms;
+  }
+  .primary-btn:hover span:nth-child(2) {
+    animation-duration: 500ms;
+    animation-delay: 250ms;
+  }
+  .primary-btn:hover span:nth-child(3) {
+    animation-duration: 500ms;
+  }
+  .primary-btn:hover span:nth-child(4) {
+    animation-duration: 500ms;
+    animation-delay: 250ms;
+  }
+}
+
+@keyframes animationSnake1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes animationSnake2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes animationSnake3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animationSnake4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
