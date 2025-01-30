@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
       }}
     >
       <div className="container flex justify-around items-center">
-        <a href="#" className="logo flex flex-col items-center justify-center">
+        <a href="#" className="logo flex flex-col items-center justify-center" aria-label="vortex logo">
           <img
             src={vortex}
             alt="vortex logo"
@@ -103,8 +103,9 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
           <button
             onClick={toggleDarkMode}
             className={`text-white duration-200 text-2xl cursor-pointer ${
-              darkMood ? "hover:text-orange-600" : "hover:text-blue-900"
+              darkMood ? "hover:text-yellow-400" : "hover:text-blue-800"
             }`}
+            aria-label="toggle dark and light mode"
           >
             {darkMood ? <FaSun /> : <FaMoon />}
           </button>
@@ -113,6 +114,7 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
         <div
           className="md:hidden text-white text-2xl cursor-pointer"
           onClick={toggleMenu}
+          aria-label="toggle menu"
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </div>

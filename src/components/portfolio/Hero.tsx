@@ -3,6 +3,7 @@ import vortex from "@assets/vortex.webp";
 import rightArrow from "@assets/right-arrow.webp";
 import phone from "@assets/phone.webp";
 import Particles from "./Particles";
+import { memo } from "react";
 
 const variants = {
   initial: {
@@ -19,7 +20,7 @@ const variants = {
   },
 };
 
-const Hero = () => {
+const Hero = memo(() => {
   return (
     <section className="hero h-screen !overflow-hidden">
       <Particles />
@@ -36,10 +37,12 @@ const Hero = () => {
           <img
             src={vortex}
             alt="vortex"
-            className=" w-[120px] h-[120px] max-md:w-[60px] max-md:h-[60px] "
+            className=" w-[120px] h-[120px] max-md:w-[60px] max-md:h-[60px]"
+            width={"120px"}
+            height={"120px"}
           />
           <h1 className="md:text-6xl text-[30px] font-extrabold">
-            Vortex للبرمجيات
+            فورتكس للبرمجيات
           </h1>
         </motion.div>
         <motion.h2
@@ -83,6 +86,6 @@ const Hero = () => {
       </motion.div>
     </section>
   );
-};
+});
 
 export default Hero;
