@@ -9,15 +9,15 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black">
+    <footer className="bg-[var(--dark-color)]">
       <div className="container mx-auto w-[90%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 p-6 gap-12">
         <div className="col">
           <div>
             <div className="flex items-center -mr-4">
-              <img src={Logo} alt="vortex Logo" />
-              <h4 className="text-2xl font-bold text-white">
+              <img src={Logo} alt="vortex Logo" width={"60px"} height={"60px"} />
+              <h5 className="text-2xl font-bold text-white">
                 فورتكس للبرمجيات
-              </h4>
+              </h5>
             </div>
             <p className="text-white text-sm">
               شركتنا واحدة من أفضل الشركات الرائدة في مجال تطوير وتصميم المواقع
@@ -28,18 +28,21 @@ const Footer = () => {
             <a
               href="#"
               className="text-white text-2xl hover:scale-105 hover:text-[var(--main-color)] transition-all"
+              aria-label="social media link"
             >
               <FaFacebook />
             </a>
             <a
               href="#"
               className="text-white text-2xl hover:scale-105 hover:text-[var(--main-color)] transition-all"
+              aria-label="social media link"
             >
               <FaInstagram />
             </a>
             <a
               href="#"
               className="text-white text-2xl hover:scale-105 hover:text-[var(--main-color)] transition-all"
+              aria-label="social media link"
             >
               <FaLinkedin />
             </a>

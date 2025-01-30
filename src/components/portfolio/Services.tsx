@@ -1,15 +1,16 @@
 import Heading from "@components/shared/Heading";
 import { motion } from "framer-motion";
-import allWebsites from "@assets/all websites.webp";
-import portfolio from "@assets/portfolio.webp";
-import responsiveDesign from "@assets/Responsive design.webp";
-import webHosting from "@assets/web hosting.webp";
-import webBuilding from "@assets/website building.webp";
-import webDesign from "@assets/website design.webp";
+import { MdWeb } from "react-icons/md";
+import { MdOutlineBuildCircle } from "react-icons/md";
+import { TbWorld } from "react-icons/tb";
+import { FiSmartphone } from "react-icons/fi";
+import { MdDesignServices } from "react-icons/md";
+import { MdOutlineDevicesOther } from "react-icons/md";
+import { memo } from "react";
 
 interface servicesType {
   id: number;
-  img: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
 }
@@ -17,49 +18,49 @@ interface servicesType {
 const servicesElement: servicesType[] = [
   {
     id: 0,
-    img: webDesign,
+    icon: <MdWeb className="text-5xl text-[var(--main-color)] my-2" />,
     title: "تصميم المواقع الإلكترونية",
     description:
       "موقعك الإلكتروني يُعد الوسيلة المثلى لعرض أفكارك ومنتجاتك والتحدث عنك. لتحقيق ذلك، يجب أن يتميز تصميمه بالجاذبية والسهولة لتوفير تجربة مميزة",
   },
   {
     id: 1,
-    img: webBuilding,
+    icon: <MdOutlineBuildCircle className="text-5xl text-[var(--main-color)] my-2" />,
     title: "بناء مواقع ذات منطق برمجي",
     description:
       "إذا كنت بحاجة إلى موقع ديناميكي يتفاعل مع المستخدمين ويعتمد على منطق برمجي متقدم، فنحن نقدم حلولًا برمجية متكاملة لضمان أداء متميز وتجربة مستخدم سلسة.",
   },
   {
     id: 2,
-    img: responsiveDesign,
+    icon: <FiSmartphone className="text-5xl text-[var(--main-color)] my-2" />,
     title: "موقع بتصميم متجاوب",
     description:
       "نضمن لك تصميماً متجاوباً يعمل بسلاسة على جميع الأجهزة، مما يوفر تجربة مستخدم مثالية سواء على الهواتف الذكية، الأجهزة اللوحية، أو شاشات الكمبيوتر..",
   },
   {
     id: 3,
-    img: webHosting,
+    icon: <TbWorld className="text-5xl text-[var(--main-color)] my-2" />,
     title: "نبني موقعك من التصميم للدومين",
     description:
       "نقدم لك حلاً متكاملاً يشمل تصميم الموقع، تطويره، وربطه بالدومين، لنضمن لك حضوراً رقمياً قوياً يعكس هويتك بأفضل صورة...",
   },
   {
     id: 4,
-    img: portfolio,
+    icon: <MdDesignServices className="text-5xl text-[var(--main-color)] my-2" />,
     title: "مساعدتك في التخطيط لموقعك",
     description:
       "نساعدك في وضع خطة واضحة لموقعك الإلكتروني، بدءًا من تحديد الأهداف والمتطلبات وصولًا إلى التصميم والتنفيذ، لضمان نجاح مشروعك الرقمي....",
   },
   {
     id: 5,
-    img: allWebsites,
+    icon: <MdOutlineDevicesOther className="text-5xl text-[var(--main-color)] my-2" />,
     title: "نستطيع تنفيذ جميع أنواع المواقع",
     description:
       "نقدم لك حلولًا مخصصة لتنفيذ جميع أنواع المواقع الإلكترونية، سواء كانت مواقع شخصية، تجارية، أو حتى معقدة بتقنيات متقدمة، مع ضمان الجودة والأداء المتميز.",
   },
 ];
 
-const Services = () => {
+const Services = memo(() => {
   return (
     <section className="services py-12 overflow-x-hidden">
       <motion.div
@@ -75,17 +76,13 @@ const Services = () => {
       </motion.div>
       <div className="container w-[90%] mx-auto mt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12">
         {servicesElement.map((service) => (
-          <div className="card relative before:rounded-2xl bg-[#222] py-4 px-4  rounded-2xl border-t-[6px] border-[var(--main-color)] hover:scale-105 transition-all cursor-pointer">
-            <img
-              src={service.img}
-              alt={service.title}
-              className="w-[100px] h-[100px] my-5"
-            />
+          <div key={service.id} className="card relative before:rounded-2xl bg-[#fff] dark:bg-[#222] py-4 px-4  rounded-2xl border-t-[6px] border-[var(--main-color)] hover:scale-105 transition-all cursor-pointer">
+            {service.icon}
 
-            <h5 className="text-2xl font-bold text-white my-3">
+            <h3 className="text-2xl font-bold dark:text-white my-3">
               {service.title}{" "}
-            </h5>
-            <p className="text-white py-2">
+            </h3>
+            <p className="dark:text-white py-2">
               موقعك الإلكتروني يُعد الوسيلة المثلى لعرض أفكارك ومنتجاتك والتحدث
               عنك. لتحقيق ذلك، يجب أن يتميز تصميمه بالجاذبية والسهولة لتوفير
               تجربة مميزة
@@ -95,6 +92,6 @@ const Services = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Services;

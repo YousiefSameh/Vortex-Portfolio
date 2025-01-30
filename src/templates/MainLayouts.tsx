@@ -11,7 +11,7 @@ const MainLayouts = () => {
       <div
         className={`wrapper ${
           darkMood ? "dark" : " "
-        } dark:bg-[var(--dark-color)] bg-white `}
+        } dark:bg-[var(--dark-color)] bg-[var(--light-color)] `}
       >
         <Outlet />
       </div>
