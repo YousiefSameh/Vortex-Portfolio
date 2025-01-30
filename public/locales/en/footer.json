@@ -1,0 +1,24 @@
+{
+  "footer": {
+    "company": {
+      "name": "Vortex Software",
+      "description": "Our company is one of the leading companies in the field of website development and design in Egypt and the Arab world."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "links": {
+        "home": "Home",
+        "about": "About Us",
+        "services": "Services",
+        "portfolio": "Portfolio",
+        "contact": "Contact Us"
+      }
+    },
+    "contact": {
+      "title": "Contact Us Via:",
+      "phone": "+(20) 123-456-789",
+      "emails": ["yousief.sameh@outlook.com", "anaswail246@gmail.com"]
+    },
+    "copyrights": "&copy; 2025 <span>vortex</span>. All rights reserved."
+  }
+}

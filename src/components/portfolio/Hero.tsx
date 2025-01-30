@@ -4,6 +4,7 @@ import rightArrow from "@assets/right-arrow.webp";
 import phone from "@assets/phone.webp";
 import Particles from "./Particles";
 import { memo } from "react";
+import useAppTranslate from "@hooks/useAppTranslate";
 
 const variants = {
   initial: {
@@ -21,6 +22,10 @@ const variants = {
 };
 
 const Hero = memo(() => {
+  const { t } = useAppTranslate({
+    path: "hero",
+  });
+
   return (
     <section className="hero h-screen !overflow-hidden">
       <Particles />
@@ -42,14 +47,14 @@ const Hero = memo(() => {
             height={"120px"}
           />
           <h1 className="md:text-6xl text-[30px] font-extrabold">
-            فورتكس للبرمجيات
+            {t("hero.title")}
           </h1>
         </motion.div>
         <motion.h2
           variants={variants}
           className="md:text-2xl text-base text-white text-center"
         >
-          شركة متخصصة في تصميم و برمجة المواقع الإلكترونية{" "}
+          {t("hero.description")}
         </motion.h2>
         <motion.div variants={variants} className="btns flex gap-12 mt-6">
           <motion.button
@@ -62,7 +67,7 @@ const Hero = memo(() => {
             <span></span>
             <span></span>
             <span></span>
-            أحدث اعمالنا
+            {t("hero.buttons.latestWorks")}
             <img
               src={rightArrow}
               className="w-[25px] h-[25px]"
@@ -79,7 +84,7 @@ const Hero = memo(() => {
             <span></span>
             <span></span>
             <span></span>
-            اتصل بنا
+            {t("hero.buttons.contactUs")}
             <img src={phone} className="w-[25px] h-[25px]" alt="contact us" />
           </motion.button>
         </motion.div>

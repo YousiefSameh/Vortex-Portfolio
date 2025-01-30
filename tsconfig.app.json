@@ -28,7 +28,8 @@
       "@types/*": ["src/types/*"],
       "@styles/*": ["src/styles/*"],
       "@templates/*": ["src/templates/*"],
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@locales/*": ["public/locales/*"]
     },
 
     /* Linting */

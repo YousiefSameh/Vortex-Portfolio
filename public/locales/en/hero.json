@@ -1,0 +1,10 @@
+{
+  "hero": {
+    "title": "Vortex Software",
+    "description": "A company specialized in designing and programming websites",
+    "buttons": {
+      "latestWorks": "Our Latest Works",
+      "contactUs": "Contact Us"
+    }
+  }
+}

@@ -15,7 +15,7 @@ html {
 }
 
 * {
-  direction: rtl;
+  direction: auto;
   z-index: 1000;
 }
 
@@ -53,7 +53,7 @@ html {
     animation-delay: 250ms;
   }
   .input {
-    @apply w-full bg-[#dedede] dark:bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white
+    @apply w-full bg-[#dedede] dark:bg-[#121212] border-[2px] border-white/20 px-8 py-4 text-xl dark:placeholder:text-white dark:text-white text-black placeholder:text-black outline-none font-bold rounded-2xl focus:border-white;
   }
 }
 

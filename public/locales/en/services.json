@@ -1,0 +1,40 @@
+{
+  "services": {
+    "heading": {
+      "title": "Our Services",
+      "subtitle": "Through innovative software solutions and creative designs, we offer website development, website design, and technical support to help you grow and excel in your fields."
+    },
+    "servicesList": [
+      {
+        "id": 0,
+        "title": "Website Design",
+        "description": "Your website is the ideal medium to showcase your ideas, products, and brand. To achieve this, its design must be attractive and user-friendly to provide an exceptional experience."
+      },
+      {
+        "id": 1,
+        "title": "Building Websites with Advanced Logic",
+        "description": "If you need a dynamic website that interacts with users and relies on advanced programming logic, we provide comprehensive solutions to ensure outstanding performance and a seamless user experience."
+      },
+      {
+        "id": 2,
+        "title": "Responsive Website Design",
+        "description": "We guarantee a responsive design that works smoothly on all devices, providing an optimal user experience on smartphones, tablets, and computer screens."
+      },
+      {
+        "id": 3,
+        "title": "From Design to Domain",
+        "description": "We offer a complete solution that includes website design, development, and domain integration to ensure a strong digital presence that reflects your identity in the best way."
+      },
+      {
+        "id": 4,
+        "title": "Helping You Plan Your Website",
+        "description": "We assist you in creating a clear plan for your website, starting from defining goals and requirements to design and implementation, ensuring the success of your digital project."
+      },
+      {
+        "id": 5,
+        "title": "We Can Build All Types of Websites",
+        "description": "We provide customized solutions for building all types of websites, whether personal, commercial, or even complex with advanced technologies, ensuring quality and outstanding performance."
+      }
+    ]
+  }
+}

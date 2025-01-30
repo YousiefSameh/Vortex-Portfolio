@@ -25,7 +25,9 @@ const servicesElement: servicesType[] = [
   },
   {
     id: 1,
-    icon: <MdOutlineBuildCircle className="text-5xl text-[var(--main-color)] my-2" />,
+    icon: (
+      <MdOutlineBuildCircle className="text-5xl text-[var(--main-color)] my-2" />
+    ),
     title: "بناء مواقع ذات منطق برمجي",
     description:
       "إذا كنت بحاجة إلى موقع ديناميكي يتفاعل مع المستخدمين ويعتمد على منطق برمجي متقدم، فنحن نقدم حلولًا برمجية متكاملة لضمان أداء متميز وتجربة مستخدم سلسة.",
@@ -46,14 +48,18 @@ const servicesElement: servicesType[] = [
   },
   {
     id: 4,
-    icon: <MdDesignServices className="text-5xl text-[var(--main-color)] my-2" />,
+    icon: (
+      <MdDesignServices className="text-5xl text-[var(--main-color)] my-2" />
+    ),
     title: "مساعدتك في التخطيط لموقعك",
     description:
       "نساعدك في وضع خطة واضحة لموقعك الإلكتروني، بدءًا من تحديد الأهداف والمتطلبات وصولًا إلى التصميم والتنفيذ، لضمان نجاح مشروعك الرقمي....",
   },
   {
     id: 5,
-    icon: <MdOutlineDevicesOther className="text-5xl text-[var(--main-color)] my-2" />,
+    icon: (
+      <MdOutlineDevicesOther className="text-5xl text-[var(--main-color)] my-2" />
+    ),
     title: "نستطيع تنفيذ جميع أنواع المواقع",
     description:
       "نقدم لك حلولًا مخصصة لتنفيذ جميع أنواع المواقع الإلكترونية، سواء كانت مواقع شخصية، تجارية، أو حتى معقدة بتقنيات متقدمة، مع ضمان الجودة والأداء المتميز.",
@@ -76,7 +82,10 @@ const Services = memo(() => {
       </motion.div>
       <div className="container w-[90%] mx-auto mt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12">
         {servicesElement.map((service) => (
-          <div key={service.id} className="card relative before:rounded-2xl bg-[#fff] dark:bg-[#222] py-4 px-4  rounded-2xl border-t-[6px] border-[var(--main-color)] hover:scale-105 transition-all cursor-pointer">
+          <div
+            key={service.id}
+            className="card relative before:rounded-2xl bg-[#fff] dark:bg-[#222] py-4 px-4  rounded-2xl border-t-[6px] border-[var(--main-color)] hover:scale-105 transition-all cursor-pointer"
+          >
             {service.icon}
 
             <h3 className="text-2xl font-bold dark:text-white my-3">

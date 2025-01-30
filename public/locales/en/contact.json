@@ -1,0 +1,28 @@
+{
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "At Vortex, we believe in the importance of effective and direct communication with our clients. If you have any inquiries or need support, our team is ready to listen to you and provide the best solutions.",
+    "labels": {
+      "fullname": "Full Name",
+      "email": "Email Address",
+      "whatsapp": "WhatsApp Number",
+      "telephone": "Phone Number",
+      "message": "Your Message"
+    },
+    "placeholders": {
+      "fullname": "Enter your full name here ...",
+      "email": "Enter your email address here ...",
+      "whatsapp": "Enter your WhatsApp number here ...",
+      "telephone": "Enter your phone number here ...",
+      "message": "Write your message here ..."
+    },
+    "buttons": {
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    },
+    "messages": {
+      "success": "Message sent successfully!",
+      "error": "An error occurred while sending."
+    }
+  }
+}

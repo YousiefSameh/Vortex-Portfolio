@@ -18,7 +18,8 @@ export default defineConfig({
       "@styles": path.resolve(__dirname, "./src/styles"),
       "@templates": path.resolve(__dirname, "./src/templates"),
       "@services": path.resolve(__dirname, "./src/services"),
+      "@locales": path.resolve(__dirname, "./public/locales"),
     },
   },
-	plugins: [react(), tailwindcss(), svgr()],
+  plugins: [react(), tailwindcss(), svgr()],
 });

@@ -1,0 +1,11 @@
+{
+  "header": {
+    "links": {
+      "home": "الرئيسية",
+      "about": "من نحن",
+      "services": "خدماتنا",
+      "portfolio": "أعمالنا",
+      "contact": "تواصل معنا"
+    }
+  }
+}

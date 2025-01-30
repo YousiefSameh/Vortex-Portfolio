@@ -1,9 +1,18 @@
 import Header from "@components/shared/Header";
 import Footer from "@components/shared/Footer";
 import { Outlet } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MainLayouts = () => {
+  const [lang, setLang] = useState("");
+
+  useEffect(() => {
+    const Lng = localStorage.getItem("i18nextLng");
+    if (Lng) {
+      setLang(Lng);
+    }
+  }, []);
+
   const [darkMood, setDarkMood] = useState<boolean>(true);
   return (
     <div>

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
 import vortex from "@assets/vortex.webp";
+import { useTranslation } from "react-i18next"; // استيراد مكتبة الترجمة
 
 interface HeaderProps {
   darkMood: boolean;
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation("header"); // استخدام الترجمة
 
   const toggleDarkMode = () => {
     setDarkMood(!darkMood);
@@ -48,7 +50,11 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
       }}
     >
       <div className="container flex justify-around items-center">
-        <a href="#" className="logo flex flex-col items-center justify-center" aria-label="vortex logo">
+        <a
+          href="#"
+          className="logo flex flex-col items-center justify-center"
+          aria-label="vortex logo"
+        >
           <img
             src={vortex}
             alt="vortex logo"
@@ -66,36 +72,17 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
               : "hidden md:flex"
           }`}
         >
-          <a
-            href="#"
-            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-          >
-            الرئيسية
-          </a>
-          <a
-            href="#"
-            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-          >
-            من نحن
-          </a>
-          <a
-            href="#"
-            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-          >
-            خدماتنا
-          </a>
-          <a
-            href="#"
-            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-          >
-            اعمالنا
-          </a>
-          <a
-            href="#"
-            className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-          >
-            تواصل معنا
-          </a>
+          {Object.entries(t("header.links", { returnObjects: true })).map(
+            ([key, value]) => (
+              <a
+                key={key}
+                href="#"
+                className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
+              >
+                {value} {/* نص الرابط */}
+              </a>
+            )
+          )}
         </nav>
 
         {/* Dark/Light Mode Toggle */}
