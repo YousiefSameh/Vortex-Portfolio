@@ -8,8 +8,8 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "ar",
-    debug: true,
+    fallbackLng: "en",
+    debug: false, // تعطيل وضع التصحيح
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
