@@ -1,32 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IServices, TLoading } from "@customTypes/index";
-import IconWrapper from "@components/portfolio/IconWrapper";
-import { lazy } from "react";
-
-const MdWeb = lazy(() =>
-	import("react-icons/md").then((module) => ({ default: module.MdWeb }))
-);
-const MdOutlineBuildCircle = lazy(() =>
-	import("react-icons/md").then((module) => ({
-		default: module.MdOutlineBuildCircle,
-	}))
-);
-const TbWorld = lazy(() =>
-	import("react-icons/tb").then((module) => ({ default: module.TbWorld }))
-);
-const FiSmartphone = lazy(() =>
-	import("react-icons/fi").then((module) => ({ default: module.FiSmartphone }))
-);
-const MdDesignServices = lazy(() =>
-	import("react-icons/md").then((module) => ({
-		default: module.MdDesignServices,
-	}))
-);
-const MdOutlineDevicesOther = lazy(() =>
-	import("react-icons/md").then((module) => ({
-		default: module.MdOutlineDevicesOther,
-	}))
-);
+import { MdWeb, MdOutlineBuildCircle, MdDesignServices, MdOutlineDevicesOther } from "react-icons/md";
+import { TbWorld } from "react-icons/tb";
+import { FiSmartphone } from "react-icons/fi";
 
 interface ServicesState {
 	services: IServices[];
@@ -38,11 +14,7 @@ const initialState: ServicesState = {
 	services: [
 		{
 			id: 0,
-			icon: (
-				<IconWrapper>
-					<MdWeb className="text-5xl text-main-color my-2" />
-				</IconWrapper>
-			),
+			icon: <MdWeb className="text-5xl text-main-color my-2" />,
 			titleAr: "تصميم المواقع الإلكترونية",
 			titleEn: "Website Design",
 			descriptionAr:
@@ -52,11 +24,7 @@ const initialState: ServicesState = {
 		},
 		{
 			id: 1,
-			icon: (
-				<IconWrapper>
-					<MdOutlineBuildCircle className="text-5xl text-main-color my-2" />
-				</IconWrapper>
-			),
+			icon: <MdOutlineBuildCircle className="text-5xl text-main-color my-2" />,
 			titleAr: "بناء مواقع ذات منطق برمجي",
 			titleEn: "Building Websites with Advanced Logic",
 			descriptionAr:
@@ -66,11 +34,7 @@ const initialState: ServicesState = {
 		},
 		{
 			id: 2,
-			icon: (
-				<IconWrapper>
-					<FiSmartphone className="text-5xl text-main-color my-2" />
-				</IconWrapper>
-			),
+			icon: <FiSmartphone className="text-5xl text-main-color my-2" />,
 			titleAr: "موقع بتصميم متجاوب",
 			titleEn: "Responsive Website Design",
 			descriptionAr:
@@ -80,11 +44,7 @@ const initialState: ServicesState = {
 		},
 		{
 			id: 3,
-			icon: (
-				<IconWrapper>
-					<TbWorld className="text-5xl text-main-color my-2" />
-				</IconWrapper>
-			),
+			icon: <TbWorld className="text-5xl text-main-color my-2" />,
 			titleAr: "نبني موقعك من التصميم للدومين",
 			titleEn: "From Design to Domain: We Build Your Website",
 			descriptionAr:
@@ -94,11 +54,7 @@ const initialState: ServicesState = {
 		},
 		{
 			id: 4,
-			icon: (
-				<IconWrapper>
-					<MdDesignServices className="text-5xl text-main-color my-2" />
-				</IconWrapper>
-			),
+			icon: <MdDesignServices className="text-5xl text-main-color my-2" />,
 			titleAr: "مساعدتك في التخطيط لموقعك",
 			titleEn: "Helping You Plan Your Website",
 			descriptionAr:
@@ -108,11 +64,7 @@ const initialState: ServicesState = {
 		},
 		{
 			id: 5,
-			icon: (
-				<IconWrapper>
-					<MdOutlineDevicesOther className="text-5xl text-main-color my-2" />
-				</IconWrapper>
-			),
+			icon: <MdOutlineDevicesOther className="text-5xl text-main-color my-2" />,
 			titleAr: "نستطيع تنفيذ جميع أنواع المواقع",
 			titleEn: "We Can Build All Types of Websites",
 			descriptionAr:
