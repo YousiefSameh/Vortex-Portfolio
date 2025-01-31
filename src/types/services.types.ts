@@ -1,6 +1,8 @@
 export type IServices = {
   id: number;
   icon: React.ReactNode;
-  title: string;
-  description: string;
+  titleAr: string;
+  titleEn: string;
+  descriptionAr: string;
+  descriptionEn: string;
 }
