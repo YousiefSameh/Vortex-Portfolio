@@ -26,8 +26,8 @@ i18n
 			caches: ["cookie"],
 		},
 		backend: {
-			loadPath: "./locales/{{lng}}/{{ns}}.json",
-			addPath: "./locales/{{lng}}/{{ns}}.missing.json",
+			loadPath: "/locales/{{lng}}/{{ns}}.json",
+			addPath: "/locales/{{lng}}/{{ns}}.missing.json",
 			allowMultiLoading: false,
 			crossDomain: false,
 			withCredentials: false,
