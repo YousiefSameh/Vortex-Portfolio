@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
+import { FaSun, FaMoon, FaBars, FaTimes, FaAngleDown } from "react-icons/fa";
 import vortex from "@assets/vortex.webp";
-import { FaGlobe } from "react-icons/fa";
 import useHeader from "@hooks/useHeader";
 
 interface HeaderProps {
@@ -111,28 +110,15 @@ const Header = ({ darkMood, setDarkMood }: HeaderProps) => {
 							aria-label="change language"
 						>
 							<option value="ar" className="text-black">
-								<FaGlobe /> العربية
+								العربية
 							</option>
 							<option value="en" className="text-black">
-								<FaGlobe /> English
+								English
 							</option>
 						</select>
 						{/* سهم مخصص */}
 						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
-							<svg
-								className="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M19 9l-7 7-7-7"
-								/>
-							</svg>
+							<FaAngleDown />
 						</div>
 					</div>
 				</div>
