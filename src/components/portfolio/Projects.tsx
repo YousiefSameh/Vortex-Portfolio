@@ -2,6 +2,7 @@ import Heading from "@components/shared/Heading";
 import { FaEye, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { memo } from "react";
+import { useAppSelector } from "@store/hooks";
 
 const variants = {
 	initial: {
@@ -19,6 +20,7 @@ const variants = {
 };
 
 const Projects = memo(() => {
+	const { projects } = useAppSelector(state => state.projects);
 	return (
 		<section className="projects py-12">
 			<motion.div
@@ -39,22 +41,22 @@ const Projects = memo(() => {
 				viewport={{ once: true }}
 				className="container w-[90%] mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-12"
 			>
-				{[1, 2, 3, 4, 5, 6].map((project) => (
+				{projects.map((project) => (
 					<motion.div
 						variants={variants}
-						key={project}
+						key={project.projectTitle.ar}
 						className="project bg-[#222] rounded-2xl border-[3px] border-[#222]"
 					>
 						<div className="image h-[140px] relative group">
 							<img
-								src="../../assets/hello.jpeg"
+								src={project.projectImage as string}
 								alt="hello"
 								className="w-full h-full bg-white absolute top-0 left-0 rounded-t-2xl"
 								width={"100%"}
 								height={"100%"}
 							/>
 							<div className="tools hidden group-hover:flex bg-black/40 absolute top-0 left-0 w-full h-full rounded-t-2xl items-center justify-center">
-								<a href="#" className="primary-btn w-fit">
+								<a href={project.projectURL} target="__blank" className="primary-btn w-fit">
 									<span></span>
 									<span></span>
 									<span></span>
@@ -66,11 +68,10 @@ const Projects = memo(() => {
 						</div>
 						<div className="text p-3">
 							<h4 className="text-[22px] text-white font-bold">
-								موقع التجارة الالكترونية (TechnoBay)
+								{project.projectTitle.ar}
 							</h4>
 							<p className="text-white text-sm">
-								تيكنو باي هو متجر إلكتروني يقدم مجموعة واسعة من الإلكترونيات،
-								الأدوات، والإكسسوارات.
+								{project.projectSubtitle.ar}
 							</p>
 							<div className="uses flex items-center mt-2">
 								<span className="font-semibold text-white ml-3">

@@ -28,7 +28,7 @@ const Hero = memo(() => {
         variants={variants}
         initial="initial"
         animate="animate"
-        className="h-screen relative flex justify-center items-center w-full flex-col"
+        className="h-screen relative flex justify-center items-center w-full flex-col bg-black/40"
       >
         <motion.div
           variants={variants}
