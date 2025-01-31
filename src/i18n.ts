@@ -8,7 +8,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    fallbackLng: "ar",
     debug: false, // تعطيل وضع التصحيح
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",
