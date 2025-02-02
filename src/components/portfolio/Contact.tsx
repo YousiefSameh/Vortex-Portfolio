@@ -24,17 +24,14 @@ const Contact = memo(() => {
   const { t } = useTranslation("contact");
 
   return (
-    <section className="contact py-12 overflow-x-hidden">
+    <section id="contact" className="contact py-12 overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <Heading
-          title={t("contact.title")} 
-          subtitle={t("contact.subtitle")} 
-        />
+        <Heading title={t("contact.title")} subtitle={t("contact.subtitle")} />
       </motion.div>
       <motion.form
         variants={variants}
@@ -48,13 +45,13 @@ const Contact = memo(() => {
             htmlFor="fullname"
             className="text-xl font-bold dark:text-white mb-4 block"
           >
-            {t("contact.fullName")} 
+            {t("contact.fullName")}
           </label>
           <input
             type="text"
             id="fullname"
             name="fullname"
-            placeholder={t("contact.fullNamePlaceholder")} 
+            placeholder={t("contact.fullNamePlaceholder")}
             autoComplete="off"
             className="input"
             required
@@ -66,13 +63,13 @@ const Contact = memo(() => {
             htmlFor="email"
             className="text-xl font-bold dark:text-white mb-4 block"
           >
-            {t("contact.email")} 
+            {t("contact.email")}
           </label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder={t("contact.emailPlaceholder")} 
+            placeholder={t("contact.emailPlaceholder")}
             autoComplete="off"
             className="input"
             required
@@ -88,13 +85,13 @@ const Contact = memo(() => {
               htmlFor="whatsapp"
               className="text-xl font-bold dark:text-white mb-4 block"
             >
-              {t("contact.whatsapp")} 
+              {t("contact.whatsapp")}
             </label>
             <input
               type="tel"
               id="whatsapp"
               name="whatsapp"
-              placeholder={t("contact.phonePlaceholder")} 
+              placeholder={t("contact.phonePlaceholder")}
               autoComplete="off"
               className="input"
               disabled={isSubmitting}
@@ -105,13 +102,13 @@ const Contact = memo(() => {
               htmlFor="telephone"
               className="text-xl font-bold dark:text-white mb-4 block"
             >
-              {t("contact.phone")} 
+              {t("contact.phone")}
             </label>
             <input
               type="tel"
               id="telephone"
               name="telephone"
-              placeholder={t("contact.phonePlaceholder")} 
+              placeholder={t("contact.phonePlaceholder")}
               autoComplete="off"
               className="input"
               disabled={isSubmitting}
@@ -123,13 +120,13 @@ const Contact = memo(() => {
             htmlFor="message"
             className="text-xl font-bold dark:text-white mb-4 block"
           >
-            {t("contact.message")} 
+            {t("contact.message")}
           </label>
           <textarea
             id="message"
             name="message"
             rows={10}
-            placeholder={t("contact.messagePlaceholder")} 
+            placeholder={t("contact.messagePlaceholder")}
             autoComplete="off"
             className="input"
             required
@@ -147,11 +144,10 @@ const Contact = memo(() => {
           <span></span>
           <span></span>
           {isSubmitting ? t("contact.sending") : t("contact.send")}{" "}
-          
         </motion.button>
         {isSubmitted && (
           <p className="text-green-500 text-center text-xl mt-4">
-            {t("contact.successMessage")} 
+            {t("contact.successMessage")}
           </p>
         )}
         {error && (

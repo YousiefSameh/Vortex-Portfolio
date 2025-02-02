@@ -4,21 +4,22 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 
 const MainLayouts = () => {
-	const [darkMood, setDarkMood] = useState<boolean>(true);
+  const [darkMood, setDarkMood] = useState<boolean>(true);
+  const [loginDashboard, setLoginDashboard] = useState<boolean>(false);
 
-	return (
-		<div
-			className={`wrapper ${
-				darkMood ? "dark" : " "
-			} dark:bg-dark-color bg-light-color `}
-		>
-			<Header setDarkMood={setDarkMood} darkMood={darkMood} />
-			<div>
-				<Outlet />
-			</div>
-			<Footer />
-		</div>
-	);
+  return (
+    <div
+      className={`wrapper ${
+        darkMood ? "dark" : " "
+      } dark:bg-dark-color bg-light-color `}
+    >
+      <Header setDarkMood={setDarkMood} darkMood={darkMood} />
+      <div>
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default MainLayouts;
