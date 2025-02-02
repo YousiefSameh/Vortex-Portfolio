@@ -1,27 +1,20 @@
 import Header from "@components/shared/Header";
 import Footer from "@components/shared/Footer";
 import { Outlet } from "react-router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const MainLayouts = () => {
-  const [lang, setLang] = useState("");
-
-  useEffect(() => {
-    const Lng = localStorage.getItem("i18nextLng");
-    if (Lng) {
-      setLang(Lng);
-    }
-  }, []);
-
   const [darkMood, setDarkMood] = useState<boolean>(true);
+  const [loginDashboard, setLoginDashboard] = useState<boolean>(false);
+
   return (
-    <div>
+    <div
+      className={`wrapper ${
+        darkMood ? "dark" : " "
+      } dark:bg-dark-color bg-light-color `}
+    >
       <Header setDarkMood={setDarkMood} darkMood={darkMood} />
-      <div
-        className={`wrapper ${
-          darkMood ? "dark" : " "
-        } dark:bg-[var(--dark-color)] bg-[var(--light-color)] `}
-      >
+      <div>
         <Outlet />
       </div>
       <Footer />

@@ -1,41 +1,26 @@
-import { useState, useRef } from "react";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaSun, FaMoon, FaBars, FaTimes, FaAngleDown } from "react-icons/fa";
 import vortex from "@assets/vortex.webp";
-import { useTranslation } from "react-i18next"; // استيراد مكتبة الترجمة
+import useHeader from "@hooks/useHeader";
 
 interface HeaderProps {
   darkMood: boolean;
   setDarkMood: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useTranslation("header"); // استخدام الترجمة
-
-  const toggleDarkMode = () => {
-    setDarkMood(!darkMood);
-    console.log(darkMood);
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const [hidden, setHidden] = useState(false);
-  const { scrollY } = useScroll();
-  const previousScrollY = useRef(0);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = previousScrollY.current;
-    previousScrollY.current = latest;
-    if (previous < latest && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
+const Header = ({ darkMood, setDarkMood }: HeaderProps) => {
+  const {
+    t,
+    i18n,
+    toggleDarkMode,
+    toggleMenu,
+    isMenuOpen,
+    hidden,
+    changeLanguage,
+  } = useHeader({
+    darkMood,
+    setDarkMood,
   });
-
   return (
     <motion.nav
       className="navBar !z-[9999] fixed h-[100px] top-0 backdrop-blur-xl bg-black/50 w-full flex items-center justify-center"
@@ -72,21 +57,40 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
               : "hidden md:flex"
           }`}
         >
-          {Object.entries(t("header.links", { returnObjects: true })).map(
-            ([key, value]) => (
-              <a
-                key={key}
-                href="#"
-                className="text-lg font-semibold duration-300 hover:text-[var(--main-color)]"
-              >
-                {value} {/* نص الرابط */}
-              </a>
-            )
-          )}
+          <a
+            href="#"
+            className="text-lg font-semibold duration-300 hover:text-main-color"
+          >
+            {t("header.home")}
+          </a>
+          <a
+            href="#about"
+            className="text-lg font-semibold duration-300 hover:text-main-color"
+          >
+            {t("header.about")}
+          </a>
+          <a
+            href="#services"
+            className="text-lg font-semibold duration-300 hover:text-main-color"
+          >
+            {t("header.services")}
+          </a>
+          <a
+            href="#projects"
+            className="text-lg font-semibold duration-300 hover:text-main-color"
+          >
+            {t("header.works")}
+          </a>
+          <a
+            href="#contact"
+            className="text-lg font-semibold duration-300 hover:text-main-color"
+          >
+            {t("header.contact")}
+          </a>
         </nav>
 
         {/* Dark/Light Mode Toggle */}
-        <div className="mood flex items-center">
+        <div className="mood flex items-center gap-4">
           <button
             onClick={toggleDarkMode}
             className={`text-white duration-200 text-2xl cursor-pointer ${
@@ -96,7 +100,29 @@ const Header: React.FC<HeaderProps> = ({ darkMood, setDarkMood }) => {
           >
             {darkMood ? <FaSun /> : <FaMoon />}
           </button>
+
+          {/* Language Selector */}
+          <div className="relative flex items-center gap-4">
+            <select
+              onChange={changeLanguage}
+              value={i18n.language}
+              className="appearance-none bg-transparent text-white border-2 border-white rounded-lg px-4 py-2 pr-8 cursor-pointer focus:outline-none focus:border-main-color hover:bg-white/10 transition-colors duration-300"
+              aria-label="change language"
+            >
+              <option value="ar" className="text-black">
+                العربية
+              </option>
+              <option value="en" className="text-black">
+                English
+              </option>
+            </select>
+            {/* سهم مخصص */}
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+              <FaAngleDown />
+            </div>
+          </div>
         </div>
+
         {/* Hamburger Menu Icon */}
         <div
           className="md:hidden text-white text-2xl cursor-pointer"

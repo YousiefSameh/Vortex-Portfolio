@@ -1,19 +1,9 @@
 {
   "projects": {
-    "heading": {
-      "title": "Our Projects",
-      "subtitle": "At Vortex, we make a difference by turning ideas into achievements. We deliver innovative solutions and integrated projects that meet our clients' needs and exceed their expectations."
-    },
-    "projectsList": [
-      {
-        "id": 1,
-        "image": "../../assets/hello.jpeg",
-        "title": "E-Commerce Website (TechnoBay)",
-        "description": "TechnoBay is an online store offering a wide range of electronics, tools, and accessories.",
-        "technologies": ["React", "Ui Ux", "Express", "MongoDB"],
-        "liveLink": "#"
-      }
-    ],
-    "githubButton": "More on Github"
+    "title": "Our Projects",
+    "subtitle": "At Vortex, we make a difference by turning ideas into achievements. We deliver innovative solutions and integrated projects that meet our clients' needs and exceed their expectations.",
+    "viewSite": "View Site",
+    "using": "Using:",
+    "moreOnGithub": "Show more..."
   }
 }

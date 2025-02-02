@@ -2,7 +2,7 @@ import Heading from "@components/shared/Heading";
 import useContact from "@hooks/useContact";
 import { motion } from "framer-motion";
 import { memo } from "react";
-import { useTranslation } from "react-i18next"; // استيراد مكتبة الترجمة
+import { useTranslation } from "react-i18next";
 
 const variants = {
   initial: {
@@ -21,20 +21,17 @@ const variants = {
 
 const Contact = memo(() => {
   const { isSubmitting, isSubmitted, error, handleSubmit } = useContact();
-  const { t } = useTranslation("contact"); // استخدام الترجمة
+  const { t } = useTranslation("contact");
 
   return (
-    <section className="contact py-12 overflow-x-hidden">
+    <section id="contact" className="contact py-12 overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <Heading
-          title={t("contact.title")} // استخدام الترجمة للعنوان
-          subtitle={t("contact.subtitle")} // استخدام الترجمة للوصف
-        />
+        <Heading title={t("contact.title")} subtitle={t("contact.subtitle")} />
       </motion.div>
       <motion.form
         variants={variants}
@@ -48,13 +45,13 @@ const Contact = memo(() => {
             htmlFor="fullname"
             className="text-xl font-bold dark:text-white mb-4 block"
           >
-            {t("contact.labels.fullname")} {/* استخدام الترجمة للتسمية */}
+            {t("contact.fullName")}
           </label>
           <input
             type="text"
             id="fullname"
             name="fullname"
-            placeholder={t("contact.placeholders.fullname")} // استخدام الترجمة للنص البديل
+            placeholder={t("contact.fullNamePlaceholder")}
             autoComplete="off"
             className="input"
             required
@@ -66,13 +63,13 @@ const Contact = memo(() => {
             htmlFor="email"
             className="text-xl font-bold dark:text-white mb-4 block"
           >
-            {t("contact.labels.email")}
+            {t("contact.email")}
           </label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder={t("contact.placeholders.email")}
+            placeholder={t("contact.emailPlaceholder")}
             autoComplete="off"
             className="input"
             required
@@ -88,13 +85,13 @@ const Contact = memo(() => {
               htmlFor="whatsapp"
               className="text-xl font-bold dark:text-white mb-4 block"
             >
-              {t("contact.labels.whatsapp")}
+              {t("contact.whatsapp")}
             </label>
             <input
               type="tel"
               id="whatsapp"
               name="whatsapp"
-              placeholder={t("contact.placeholders.whatsapp")}
+              placeholder={t("contact.phonePlaceholder")}
               autoComplete="off"
               className="input"
               disabled={isSubmitting}
@@ -105,13 +102,13 @@ const Contact = memo(() => {
               htmlFor="telephone"
               className="text-xl font-bold dark:text-white mb-4 block"
             >
-              {t("contact.labels.telephone")}
+              {t("contact.phone")}
             </label>
             <input
               type="tel"
               id="telephone"
               name="telephone"
-              placeholder={t("contact.placeholders.telephone")}
+              placeholder={t("contact.phonePlaceholder")}
               autoComplete="off"
               className="input"
               disabled={isSubmitting}
@@ -123,13 +120,13 @@ const Contact = memo(() => {
             htmlFor="message"
             className="text-xl font-bold dark:text-white mb-4 block"
           >
-            {t("contact.labels.message")}
+            {t("contact.message")}
           </label>
           <textarea
             id="message"
             name="message"
             rows={10}
-            placeholder={t("contact.placeholders.message")}
+            placeholder={t("contact.messagePlaceholder")}
             autoComplete="off"
             className="input"
             required
@@ -146,19 +143,15 @@ const Contact = memo(() => {
           <span></span>
           <span></span>
           <span></span>
-          {isSubmitting
-            ? t("contact.buttons.submitting")
-            : t("contact.buttons.submit")}
+          {isSubmitting ? t("contact.sending") : t("contact.send")}{" "}
         </motion.button>
         {isSubmitted && (
           <p className="text-green-500 text-center text-xl mt-4">
-            {t("contact.messages.success")}
+            {t("contact.successMessage")}
           </p>
         )}
         {error && (
-          <p className="text-red-500 text-center text-xl mt-4">
-            {t("contact.messages.error")}
-          </p>
+          <p className="text-red-500 text-center text-xl mt-4">{error}</p>
         )}
       </motion.form>
     </section>

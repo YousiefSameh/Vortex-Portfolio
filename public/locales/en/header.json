@@ -1,11 +1,9 @@
 {
   "header": {
-    "links": {
-      "home": "Home",
-      "about": "About Us",
-      "services": "Services",
-      "portfolio": "Portfolio",
-      "contact": "Contact Us"
-    }
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "works": "Our Works",
+    "contact": "Contact Us"
   }
 }

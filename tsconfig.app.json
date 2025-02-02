@@ -6,8 +6,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["vite-plugin-svgr/client"],
-
+    "types": [],
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -15,6 +14,8 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
 
     // Paths
     "baseUrl": ".",
@@ -25,11 +26,10 @@
       "@pages/*": ["src/pages/*"],
       "@routes/*": ["src/routes/*"],
       "@store/*": ["src/store/*"],
-      "@types/*": ["src/types/*"],
       "@styles/*": ["src/styles/*"],
       "@templates/*": ["src/templates/*"],
-      "@services/*": ["src/services/*"],
-      "@locales/*": ["public/locales/*"]
+      "@customTypes/*": ["src/types/*"],
+      "@services/*": ["src/services/*"]
     },
 
     /* Linting */
@@ -39,5 +39,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }
