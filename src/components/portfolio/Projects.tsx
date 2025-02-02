@@ -1,7 +1,7 @@
 import Heading from "@components/shared/Heading";
-import { FaEye, FaGithub } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { useAppSelector } from "@store/hooks";
 import { useTranslation } from "react-i18next";
 
@@ -22,6 +22,7 @@ const variants = {
 
 const Projects = memo(() => {
 	const { projects } = useAppSelector((state) => state.projects);
+	const [max, setMax] = useState(3);
 	const { t, i18n } = useTranslation("projects");
 
 	return (
@@ -44,9 +45,8 @@ const Projects = memo(() => {
 				viewport={{ once: true }}
 				className="container w-[90%] mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-12"
 			>
-				{projects.map((project) => (
-					<motion.div
-						variants={variants}
+				{projects.slice(0, max).map((project) => (
+					<div
 						key={project.projectTitle.ar}
 						className="project dark:bg-[#222] bg-[#f8f8f8] rounded-2xl border-[3px] dark:border-[#222] border-[#f8f8f8] shadow-2xl"
 					>
@@ -69,7 +69,7 @@ const Projects = memo(() => {
 									<span></span>
 									<span></span>
 									<FaEye className="text-2xl" />
-									{t("projects.viewSite")} {/* استخدام النص المترجم */}
+									{t("projects.viewSite")}
 								</a>
 							</div>
 						</div>
@@ -86,10 +86,10 @@ const Projects = memo(() => {
 									: project.projectSubtitle.en}{" "}
 							</p>
 							<div className="uses flex items-center mt-2">
-								<span className="font-semibold dark:text-white text-black ml-3">
+								<span className="font-semibold dark:text-white text-black">
 									{t("projects.using")}
 								</span>
-								<div className="cards flex items-center gap-2">
+								<div className="cards flex items-center gap-2 mx-2">
 									{project.technologies.map((tech, index) => (
 										<div
 											key={index}
@@ -101,16 +101,16 @@ const Projects = memo(() => {
 								</div>
 							</div>
 						</div>
-					</motion.div>
+					</div>
 				))}
 			</motion.div>
-			<button className="primary-btn font-bold outline-none mx-auto">
+			<button className="primary-btn font-bold outline-none mx-auto" onClick={() => setMax(max + max)}>
 				<span></span>
 				<span></span>
 				<span></span>
 				<span></span>
-				{t("projects.moreOnGithub")}
-				<FaGithub className="text-3xl" />
+				{t("projects.showMore")}
+				<FaEye className="text-3xl" />
 			</button>
 		</section>
 	);

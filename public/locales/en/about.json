@@ -1,0 +1,9 @@
+{
+  "about": {
+    "title": "About Us",
+    "subtitle": "Meet our team and discover our comprehensive web development services",
+    "whyVortex": "Why Vortex?",
+    "description": "We are a fully integrated team of developers and designers, offering end-to-end services to create professional websites that meet your business needs and help you achieve your goals. From captivating designs using Figma and Adobe XD, to developing full-fledged websites with cutting-edge technologies like HTML, CSS, JavaScript, TypeScript, React, TailwindCSS, Bootstrap for front-end, and Node.js, Express, Nest.js, MongoDB for back-end, we ensure your website embodies your vision and reflects your identity. Join us today, and let us be your partner in your digital journey toward success!",
+    "contact": "Contact Us"
+  }
+}
