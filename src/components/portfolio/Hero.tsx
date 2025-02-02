@@ -4,6 +4,7 @@ import rightArrow from "@assets/right-arrow.webp";
 import phone from "@assets/phone.webp";
 import Particles from "./Particles";
 import { memo } from "react";
+import { useTranslation } from "react-i18next"; // استيراد useTranslation
 
 const variants = {
   initial: {
@@ -21,6 +22,8 @@ const variants = {
 };
 
 const Hero = memo(() => {
+  const { t } = useTranslation("hero");
+
   return (
     <section className="hero h-screen !overflow-hidden">
       <Particles />
@@ -28,7 +31,7 @@ const Hero = memo(() => {
         variants={variants}
         initial="initial"
         animate="animate"
-        className="h-screen relative flex justify-center items-center w-full flex-col"
+        className="h-screen relative flex justify-center items-center w-full flex-col bg-black/40"
       >
         <motion.div
           variants={variants}
@@ -42,14 +45,14 @@ const Hero = memo(() => {
             height={"120px"}
           />
           <h1 className="md:text-6xl text-[30px] font-extrabold">
-            فورتكس للبرمجيات
+            {t("hero.title")} {/* استخدام النص المترجم */}
           </h1>
         </motion.div>
         <motion.h2
           variants={variants}
           className="md:text-2xl text-base text-white text-center"
         >
-          شركة متخصصة في تصميم و برمجة المواقع الإلكترونية{" "}
+          {t("hero.description")} {/* استخدام النص المترجم */}
         </motion.h2>
         <motion.div variants={variants} className="btns flex gap-12 mt-6">
           <motion.button
@@ -62,7 +65,7 @@ const Hero = memo(() => {
             <span></span>
             <span></span>
             <span></span>
-            أحدث اعمالنا
+            {t("hero.buttons.latestWorks")} {/* استخدام النص المترجم */}
             <img
               src={rightArrow}
               className="w-[25px] h-[25px]"
@@ -79,7 +82,7 @@ const Hero = memo(() => {
             <span></span>
             <span></span>
             <span></span>
-            اتصل بنا
+            {t("hero.buttons.contactUs")} {/* استخدام النص المترجم */}
             <img src={phone} className="w-[25px] h-[25px]" alt="contact us" />
           </motion.button>
         </motion.div>

@@ -6,12 +6,6 @@ export default function ParticleBackground() {
   const { init } = useParticles();
 
   const particlesOptions = useMemo(() => ({
-    background: {
-      position: "",
-      color: {
-        value: "#000",
-      },
-    },
     fullScreen: {
       enable: false,
     },
@@ -38,10 +32,10 @@ export default function ParticleBackground() {
     },
     particles: {
       color: {
-        value: "#fff",
+        value: "#00c3b6",
       },
       links: {
-        color: "#fff",
+        color: "#00c3b6",
         distance: 250,
         enable: true,
         opacity: 0.5,
@@ -83,7 +77,7 @@ export default function ParticleBackground() {
       {init && (
         <Particles
           id="tsparticles"
-          className="!z-10 absolute w-full h-full"
+          className="!z-10 absolute w-full h-full dark:bg-black bg-white"
           options={particlesOptions}
         />
       )}
