@@ -9,11 +9,11 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "ar",
-    debug: false, // تعطيل وضع التصحيح
+    debug: false,
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
-    ns: ["header", "hero", "services", "projects", "contact", "footer"],
+    ns: ["header", "hero", "about", "services", "projects", "contact", "footer"],
     defaultNS: "header",
     interpolation: {
       escapeValue: false,
