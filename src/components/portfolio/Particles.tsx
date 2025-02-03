@@ -33,10 +33,10 @@ export default function ParticleBackground() {
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: "#fff",
         },
         links: {
-          color: "#ffffff",
+          color: "#fff",
           distance: 250,
           enable: true,
           opacity: 0.5,
@@ -80,7 +80,7 @@ export default function ParticleBackground() {
       {init && (
         <Particles
           id="tsparticles"
-          className="!z-10 absolute w-full h-full dark:bg-black bg-[#00aa9f]"
+          className="!z-10 absolute w-full h-full dark:bg-black bg-main-color"
           options={particlesOptions}
         />
       )}

@@ -9,18 +9,18 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "ar",
-    debug: false, // تعطيل وضع التصحيح
+    debug: false,
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
     ns: [
       "header",
       "hero",
+      "about",
       "services",
       "projects",
       "contact",
       "footer",
-      "about",
     ],
     defaultNS: "header",
     interpolation: {
