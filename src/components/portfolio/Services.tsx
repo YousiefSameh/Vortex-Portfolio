@@ -25,17 +25,17 @@ const Services = memo(() => {
       <div className="container w-[90%] mx-auto mt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12">
         {services.map((service: IServices) => (
           <div
-            key={service._id}
+            key={service.id}
             className="card relative before:rounded-2xl bg-[#fff] dark:bg-[#222] py-4 px-4 rounded-2xl border-t-[6px] border-main-color hover:scale-105 transition-all cursor-pointer"
           >
             {service.icon}
             <h3 className="text-2xl font-bold dark:text-white my-3">
-              {i18n.language === "ar" ? service.title.ar : service.title.en}{" "}
+              {i18n.language === "ar" ? service.titleAr : service.titleEn}{" "}
             </h3>
             <p className="dark:text-white py-2">
               {i18n.language === "ar"
-                ? service.description.ar
-                : service.description.en}{" "}
+                ? service.descriptionAr
+                : service.descriptionEn}{" "}
             </p>
           </div>
         ))}

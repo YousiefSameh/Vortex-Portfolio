@@ -1,21 +1,31 @@
 export interface IProject {
   _id?: string;
+
+  projectLang: {
+    ar: string;
+    en: string;
+  };
+
   projectTitle: {
     ar: string;
     en: string;
   };
-  projectSubtitle: {
+
+  projectDescription: {
     ar: string;
     en: string;
   };
+
   projectURL: string;
   projectGithubURL: string;
-  projectImage: File | string;
+  projectImage?: File | string;
+
   category: {
     ar: string;
     en: string;
   };
+
   createdAt?: string;
   updatedAt?: string;
-  technologies: string[];
+  technologies: string;
 }

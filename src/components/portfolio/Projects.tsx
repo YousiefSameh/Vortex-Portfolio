@@ -82,10 +82,10 @@ const Projects = memo(() => {
               </h4>
               <p className="dark:text-white text-black text-sm">
                 {i18n.language === "ar"
-                  ? project.projectSubtitle.ar
-                  : project.projectSubtitle.en}{" "}
+                  ? project.projectDescription.ar
+                  : project.projectDescription.en}{" "}
               </p>
-              <div className="uses flex items-center mt-2">
+              {/* <div className="uses flex items-center mt-2">
                 <span className="font-semibold dark:text-white text-black">
                   {t("projects.using")}
                 </span>
@@ -99,7 +99,7 @@ const Projects = memo(() => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
