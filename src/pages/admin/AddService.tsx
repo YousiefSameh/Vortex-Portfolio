@@ -2,7 +2,7 @@ import Sidebar from "@components/dashboard/Sidebar";
 import useAddServices from "@hooks/useAddServices";
 
 const AddService = () => {
-	const { icons, formData, handleChange, handleIconChange, handleSubmit } =
+	const { formData, handleInputChange, handleFileChange, handleSubmit } =
 		useAddServices();
 	return (
 		<div className="min-h-screen bg-dark-color text-light-color flex">
@@ -21,24 +21,15 @@ const AddService = () => {
 					<form onSubmit={handleSubmit}>
 						<div className="mb-4">
 							<label className="block text-ligth-color mb-2">
-								اختر أيقونة
+								أضف أيقونة
 							</label>
-							<div className="flex space-x-4">
-                {icons.map((el, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => handleIconChange(el.icon)}
-                    className={`px-2 py-1 border rounded-lg cursor-pointer transition-transform duration-200 focus:border-main-color ${
-                      formData.icon === el.icon
-                        ? "border-main-color transform scale-110"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    {el.icon}
-                  </button>
-                ))}
-							</div>
+							<input
+								type="file"
+								name="image"
+								onChange={handleFileChange}
+								required
+								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
+							/>
 						</div>
 
 						<div className="mb-4">
@@ -48,8 +39,8 @@ const AddService = () => {
 							<input
 								type="text"
 								name="titleAr"
-								value={formData.titleAr}
-								onChange={handleChange}
+								value={formData.title.ar}
+								onChange={handleInputChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
 							/>
@@ -62,8 +53,8 @@ const AddService = () => {
 							<input
 								type="text"
 								name="titleEn"
-								value={formData.titleEn}
-								onChange={handleChange}
+								value={formData.title.en}
+								onChange={handleInputChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
 							/>
@@ -75,8 +66,8 @@ const AddService = () => {
 							</label>
 							<textarea
 								name="descriptionAr"
-								value={formData.descriptionAr}
-								onChange={handleChange}
+								value={formData.description.ar}
+								onChange={handleInputChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
 							/>
@@ -88,8 +79,8 @@ const AddService = () => {
 							</label>
 							<textarea
 								name="descriptionEn"
-								value={formData.descriptionEn}
-								onChange={handleChange}
+								value={formData.description.en}
+								onChange={handleInputChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
 							/>

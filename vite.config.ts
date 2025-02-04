@@ -17,6 +17,7 @@ export default defineConfig({
       "@templates": path.resolve(__dirname, "./src/templates"),
       "@services": path.resolve(__dirname, "./src/services"),
       "@customTypes": path.resolve(__dirname, "./src/types"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
   plugins: [react(), tailwindcss()],
