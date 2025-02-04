@@ -1,51 +1,87 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addService } from "@store/services/services.slice";
-import { MdWeb, MdOutlineBuildCircle, MdDesignServices, MdOutlineDevicesOther } from "react-icons/md";
-import { TbWorld } from "react-icons/tb";
-import { FiSmartphone } from "react-icons/fi";
+import { useAppDispatch } from "@store/hooks";
+import { IServices } from "@customTypes/services.types";
+import actAddService from "@store/services/act/actAddService";
 
 const useAddServices = () => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    icon: <MdWeb className="text-5xl text-main-color my-2" />,
-    titleAr: "",
-    titleEn: "",
-    descriptionAr: "",
-    descriptionEn: "",
+  const dispatch = useAppDispatch();
+  const [formData, setFormData] = useState<IServices>({
+    title: {
+      ar: "",
+      en: "",
+    },
+    description: {
+      ar: "",
+      en: "",
+    },
+    image: { url: "" },
   });
 
-  const icons = [
-    { name: "MdWeb", icon: <MdWeb className="text-5xl text-main-color my-2" /> },
-    { name: "MdOutlineBuildCircle", icon: <MdOutlineBuildCircle className="text-5xl text-main-color my-2" /> },
-    { name: "FiSmartphone", icon: <FiSmartphone className="text-5xl text-main-color my-2" /> },
-    { name: "TbWorld", icon: <TbWorld className="text-5xl text-main-color my-2" /> },
-    { name: "MdDesignServices", icon: <MdDesignServices className="text-5xl text-main-color my-2" /> },
-    { name: "MdOutlineDevicesOther", icon: <MdOutlineDevicesOther className="text-5xl text-main-color my-2" /> },
-  ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    if (name !== "_id") {
+      if (name.includes(".")) {
+        const [parentKey, childKey] = name.split(".");
+        setFormData((prevData) => ({
+          ...prevData,
+          [parentKey]: {
+            ...(prevData[parentKey as keyof IServices] as object || {}),
+            [childKey]: value,
+          },
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+      }
+    }
   };
 
-  const handleIconChange = (icon: JSX.Element) => {
-    setFormData((prevFormData) => ({ ...prevFormData, icon }));
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: e.target.files![0],
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(addService(formData));
+
+    const serviceData = new FormData();
+    Object.keys(formData).forEach((key) => {
+      const value = formData[key as keyof IServices];
+
+      if (typeof value === "object" && !(value instanceof File)) {
+        Object.keys(value).forEach((subKey) => {
+          serviceData.append(`${key}.${subKey}`, value[subKey as keyof typeof value]);
+        });
+      } else if (value instanceof File) {
+        serviceData.append(key, value);
+      } else {
+        serviceData.append(key, value as string);
+      }
+    });
+
+    dispatch(actAddService(serviceData));
+
     setFormData({
-      icon: <MdWeb className="text-5xl text-main-color my-2" />,
-      titleAr: "",
-      titleEn: "",
-      descriptionAr: "",
-      descriptionEn: "",
+      title: {
+        ar: "",
+        en: "",
+      },
+      description: {
+        ar: "",
+        en: "",
+      },
+      image: { url: "" },
     });
   };
 
-  return { icons, formData, handleChange, handleIconChange, handleSubmit }
-}
+  return { formData, handleInputChange, handleFileChange, handleSubmit };
+};
 
-export default useAddServices
+export default useAddServices;
