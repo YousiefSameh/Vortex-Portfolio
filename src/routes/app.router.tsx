@@ -3,7 +3,6 @@ import { Suspense, lazy } from "react";
 import Loading from "@components/feedback/Loading";
 import AddService from "@pages/admin/services/AddService";
 import EditService from "@pages/admin/services/EditService";
-import Projects from "@components/portfolio/Projects";
 import ProjectsTable from "@pages/admin/projects/ProjectsTable";
 
 const MainLayouts = lazy(() => import("@templates/MainLayouts"));

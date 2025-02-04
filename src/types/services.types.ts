@@ -1,11 +1,13 @@
-type ImageType = {
-  url: string;
-  public_id?: string;
-} | File;
+type ImageType =
+  | {
+      url: string;
+      public_id?: string;
+    }
+  | File;
 
 export type IServices = {
   _id?: string;
-  image: ImageType;
+  image?: ImageType;
   title: {
     ar: string;
     en: string;
@@ -14,4 +16,5 @@ export type IServices = {
     ar: string;
     en: string;
   };
-}
+  icon?: JSX.Element;
+};

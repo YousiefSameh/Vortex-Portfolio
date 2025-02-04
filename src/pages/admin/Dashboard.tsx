@@ -16,7 +16,7 @@ const Dashboard = () => {
           {/* إضافة Services */}
           <Link
             to={"/dashboard/services"}
-            className="bg-main-color p-6 rounded-lg shadow-lg"
+            className="bg-main-color p-6 rounded-lg shadow-lg hover:bg-hover-color hover:scale-[1.02] duration-300 transition-all"
           >
             <h2 className="text-3xl font-bold mb-4 text-light-color">
               الخدمات
@@ -27,21 +27,13 @@ const Dashboard = () => {
           {/* إضافة Projects */}
           <Link
             to={"/dashboard/projects"}
-            className="bg-main-color p-6 rounded-lg shadow-lg"
+            className="bg-main-color p-6 rounded-lg shadow-lg hover:bg-hover-color hover:scale-[1.02] duration-300 transition-all"
           >
             <h2 className="text-3xl font-bold mb-4 text-light-color">
               المشاريع
             </h2>
             <p className="text-light-color">أضف وأدر مشاريعك هنا.</p>
           </Link>
-
-          {/* عرض الإحصائيات */}
-          <div className="bg-main-color p-6 rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold mb-4 text-light-color">
-              الإحصائيات
-            </h2>
-            <p className="text-light-color">اعرض إحصائياتك هنا.</p>
-          </div>
         </div>
       </div>
     </div>

@@ -19,7 +19,9 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-light-color p-6 flex flex-col justify-between h-screen sticky top-0 right-0">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-dark-color">فورتكس</h1>
+        <Link to={"/dashboard"} className="text-3xl font-bold text-dark-color">
+          فورتكس
+        </Link>
       </div>
 
       <nav className="flex-1">
@@ -27,7 +29,7 @@ const Sidebar = () => {
           <li>
             <Link
               to={"/dashboard/services"}
-              className="block dark:text-light-color text-dark-color hover:text-hover-color transition-colors"
+              className="block  transition-colors bg-black/70 hover:bg-black/80 duration-200 text-xl font-bold rounded-md p-3"
             >
               الخدمات
             </Link>
@@ -35,17 +37,9 @@ const Sidebar = () => {
           <li>
             <Link
               to={"/dashboard/projects"}
-              className="block dark:text-light-color text-dark-color hover:text-hover-color transition-colors"
+              className="block  transition-colors bg-black/70 hover:bg-black/80 duration-200 text-xl font-bold rounded-md p-3"
             >
               المشاريع
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={"/dashboard/stats"}
-              className="block dark:text-light-color text-dark-color hover:text-hover-color transition-colors"
-            >
-              الاحصائيات
             </Link>
           </li>
         </ul>
