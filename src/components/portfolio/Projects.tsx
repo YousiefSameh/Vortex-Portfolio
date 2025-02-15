@@ -1,9 +1,8 @@
 import Heading from "@components/shared/Heading";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { memo, useState } from "react";
+import { memo } from "react";
 import { useAppSelector } from "@store/hooks";
-import { useTranslation } from "react-i18next";
 
 const variants = {
 	initial: {
@@ -21,10 +20,7 @@ const variants = {
 };
 
 const Projects = memo(() => {
-	const { projects } = useAppSelector((state) => state.projects);
-	const [max, setMax] = useState(3);
-	const { t, i18n } = useTranslation("projects");
-
+	const { projects } = useAppSelector(state => state.projects);
 	return (
 		<section className="projects py-12">
 			<motion.div
@@ -34,8 +30,8 @@ const Projects = memo(() => {
 				viewport={{ once: true }}
 			>
 				<Heading
-					title={t("projects.title")}
-					subtitle={t("projects.subtitle")}
+					title="اعمالنا و مشروعاتنا"
+					subtitle="في شركة فورتكس، نحن نصنع الفرق من خلال تحويل الأفكار إلى إنجازات. نعمل على تقديم حلول مبتكرة ومشروعات متكاملة تلبي احتياجات عملائنا وتفوق توقعاتهم."
 				/>
 			</motion.div>
 			<motion.div
@@ -45,10 +41,11 @@ const Projects = memo(() => {
 				viewport={{ once: true }}
 				className="container w-[90%] mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-12"
 			>
-				{projects.slice(0, max).map((project) => (
-					<div
+				{projects.map((project) => (
+					<motion.div
+						variants={variants}
 						key={project.projectTitle.ar}
-						className="project dark:bg-[#222] bg-[#f8f8f8] rounded-2xl border-[3px] dark:border-[#222] border-[#f8f8f8] shadow-2xl"
+						className="project bg-[#222] rounded-2xl border-[3px] border-[#222]"
 					>
 						<div className="image h-[140px] relative group">
 							<img
@@ -59,58 +56,52 @@ const Projects = memo(() => {
 								height={"100%"}
 							/>
 							<div className="tools hidden group-hover:flex bg-black/40 absolute top-0 left-0 w-full h-full rounded-t-2xl items-center justify-center">
-								<a
-									href={project.projectURL}
-									target="__blank"
-									className="primary-btn w-fit"
-								>
+								<a href={project.projectURL} target="__blank" className="primary-btn w-fit">
 									<span></span>
 									<span></span>
 									<span></span>
 									<span></span>
-									<FaEye className="text-2xl" />
-									{t("projects.viewSite")}
+									<FaEye className="text-2xl"/>
+                  شاهد الموقع
 								</a>
 							</div>
 						</div>
 						<div className="text p-3">
-							<h4 className="text-[22px] dark:text-white text-black font-bold">
-								{i18n.language === "ar"
-									? project.projectTitle.ar
-									: project.projectTitle.en}{" "}
-								{/* عرض العنوان بناءً على اللغة */}
+							<h4 className="text-[22px] text-white font-bold">
+								{project.projectTitle.ar}
 							</h4>
-							<p className="dark:text-white text-black text-sm">
-								{i18n.language === "ar"
-									? project.projectSubtitle.ar
-									: project.projectSubtitle.en}{" "}
+							<p className="text-white text-sm">
+								{project.projectSubtitle.ar}
 							</p>
 							<div className="uses flex items-center mt-2">
-								<span className="font-semibold dark:text-white text-black">
-									{t("projects.using")}
+								<span className="font-semibold text-white ml-3">
+									بأستخدام:{" "}
 								</span>
-								<div className="cards flex items-center gap-2 mx-2">
-									{project.technologies.map((tech, index) => (
-										<div
-											key={index}
-											className="card text-[12px] text-main-color px-2.5 py-1 bg-neutral-900 shadow w-fit rounded-full font-bold max-md:text-[8px]"
-										>
-											{tech}
-										</div>
-									))}
+								<div className="cards flex items-center gap-2">
+									<div className="card text-[13px] text-blue-400 px-3 py-1 bg-neutral-900 shadow w-fit rounded-full font-bold max-md:text-[8px]">
+										React
+									</div>
+									<div className="card text-[13px] text-purple-600 px-3 py-1 bg-neutral-900 shadow w-fit rounded-full font-bold max-md:text-[8px]">
+										Ui Ux
+									</div>
+									<div className="card text-[13px] text-neutral-200 px-3 py-1 bg-neutral-900 shadow w-fit rounded-full font-bold max-md:text-[8px]">
+										Express
+									</div>
+									<div className="card text-[13px] text-green-400 px-3 py-1 bg-neutral-900 shadow w-fit rounded-full font-bold max-md:text-[8px]">
+										MongoDB
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</motion.div>
 				))}
 			</motion.div>
-			<button className="primary-btn font-bold outline-none mx-auto" onClick={() => setMax(max + max)}>
+			<button className="primary-btn font-bold outline-none mx-auto">
 				<span></span>
 				<span></span>
 				<span></span>
 				<span></span>
-				{t("projects.showMore")}
-				<FaEye className="text-3xl" />
+				والمزيد في Github <FaGithub className="text-3xl" />
 			</button>
 		</section>
 	);

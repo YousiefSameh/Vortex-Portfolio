@@ -17,5 +17,4 @@ export interface IProject {
   };
   createdAt?: string;
   updatedAt?: string;
-  technologies: string[];
 }
