@@ -11,11 +11,15 @@ interface ProjectsState {
 const initialState: ProjectsState = {
   projects: [
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع تيكنو باي",
         en: "TechnoBay Website",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "تيكنو باي هو متجر إلكتروني يقدم مجموعة واسعة من الإلكترونيات، الأدوات، والإكسسوارات.",
         en: "Technobay is an online store that offers a wide range of electronics, gadgets, and accessories.",
       },
@@ -30,14 +34,18 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/TechnoBay",
       createdAt: "2025-01-19T16:18:09.471Z",
       updatedAt: "2025-01-19T16:18:09.471Z",
-      technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع فيوري",
         en: "Fiore Website",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "فيوري هو موقع لمحل زهور يقدم باقات زهور وترتيبات زهرية جميلة وطازجة لكل المناسبات",
         en: "Fiore is a flower shop website that offers beautiful and fresh flower bouquets and arrangements for all occasions.",
       },
@@ -52,14 +60,18 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/Fiore",
       createdAt: "2025-01-19T16:23:43.021Z",
       updatedAt: "2025-01-19T16:23:43.021Z",
-      technologies: ["React", "CSS", "Firebase"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع ميدستار",
         en: "Medstart Website",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "ميدستار: رعاية صحية متعاطفة، وعلاجات متقدمة، وخبرة طبية موثوقة.",
         en: "Medstar: Compassionate healthcare, advanced treatments, trusted medical expertise.",
       },
@@ -74,14 +86,18 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/MedstarWebsite",
       createdAt: "2025-01-19T21:39:48.944Z",
       updatedAt: "2025-01-19T21:39:48.944Z",
-      technologies: ["React", "Bootstrap", "Firebase"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع التجارة الإلكترونية (توبيكو)",
         en: "Ecommerce Website (Topico)",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "توبيكو هو موقع للتجارة الإلكترونية يقدم مجموعة واسعة من المنتجات، من الإلكترونيات إلى السلع المنزلية.",
         en: "Topico is an e-commerce website offering a wide range of products, from electronics to home goods.",
       },
@@ -96,14 +112,18 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/Ecommerce",
       createdAt: "2025-01-19T21:42:35.510Z",
       updatedAt: "2025-01-19T21:42:35.510Z",
-      technologies: ["JavaScript", "HTML", "CSS"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع الاختبارات",
         en: "Quizes Website",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "موقع اختبارات يقدم اختبارات ممتعة وتفاعلية حول مواضيع مختلفة لاختبار وتحسين معرفتك.",
         en: "A quiz website offering fun, interactive quizzes on various topics to test and improve your knowledge.",
       },
@@ -118,36 +138,44 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/QuizApp",
       createdAt: "2025-01-19T21:44:39.306Z",
       updatedAt: "2025-01-19T21:44:39.306Z",
-      technologies: ["JavaScript", "HTML", "CSS"],
+      technologies: "hello world",
     },
     {
-      projectTitle: {
-        ar: "نظام CRUD",
-        en: "CRUD System",
+      projectLang: {
+        ar: "ar",
+        en: "en",
       },
-      projectSubtitle: {
-        ar: "يتيح موقع نظام CRUD للمستخدمين إنشاء البيانات وقراءتها وتحديثها وحذفها بكفاءة عبر الإنترنت.",
-        en: "A CRUD system website allows users to create, read, update, and delete data efficiently online.",
+      projectTitle: {
+        ar: "اديداس للتجاره الالكترونيه",
+        en: "Adidas E-commerce",
+      },
+      projectDescription: {
+        ar: "متجر نايكي الإلكتروني لتصفح وشراء المنتجات بسهولة مع حساب الأسعار وإرسال الطلبات عبر واتساب",
+        en: "Nike Store e-commerce for easy browsing, purchasing, price calculation, and WhatsApp orders.",
       },
       projectImage:
-        "https://res.cloudinary.com/dvt8gcjej/image/upload/v1737323189/w856llxtbt9mrx1cd7gm.png",
+        "https://66b85c98712ea1fb5dd763f2--friendly-bonbon-d2fb73.netlify.app/images/Nike-Store-E-commerce.WebP",
       category: {
         ar: "جافا سكريبت",
         en: "javascript",
       },
       _id: "678d72b5b2e400df0cb5f276",
-      projectURL: "https://crudproject-yousief-samehs-projects.vercel.app/",
-      projectGithubURL: "https://github.com/YousiefSameh/CRUD_Project",
+      projectURL: "https://nike-store-e-commerce-flax.vercel.app/",
+      projectGithubURL: "https://github.com/anaswail/Nike-Store-e-commerce",
       createdAt: "2025-01-19T21:46:29.949Z",
       updatedAt: "2025-01-19T21:46:29.949Z",
-      technologies: ["JavaScript", "HTML", "CSS"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "لعبة تخمين الكلمة",
         en: "Guess The Word Game",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "لعبة تخمين الكلمة هي موقع ويب ممتع وتفاعلي حيث يقوم اللاعبون بحل ألغاز الكلمات والتحديات.",
         en: "Guess the Word Game is a fun and interactive website where players solve word puzzles and challenges.",
       },
@@ -162,14 +190,18 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/GuessTheWord",
       createdAt: "2025-01-19T21:49:05.028Z",
       updatedAt: "2025-01-19T21:49:05.028Z",
-      technologies: ["JavaScript", "HTML", "CSS"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع كودزوكا",
         en: "Kudzoka Website",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "كودزوكا هي منصة توصيل تضمن نقل البضائع والطرود بشكل سريع وموثوق وآمن.",
         en: "Kudzoka is a delivery platform that ensures fast, reliable, and secure transport of goods and packages.",
       },
@@ -184,14 +216,18 @@ const initialState: ProjectsState = {
       projectGithubURL: "https://github.com/YousiefSameh/KudzokaWebsite",
       createdAt: "2025-01-19T21:50:17.744Z",
       updatedAt: "2025-01-19T21:50:17.744Z",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      technologies: "hello world",
     },
     {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
       projectTitle: {
         ar: "موقع كرياتيفو",
         en: "Criativo Website",
       },
-      projectSubtitle: {
+      projectDescription: {
         ar: "كرياتيفو هو موقع ويب لوكالة إبداعية ديناميكية تقدم تصميمًا مبتكرًا وحلول العلامات التجارية والتسويق.",
         en: "Criativo is a dynamic creative agency website offering innovative design, branding, and marketing solutions.",
       },
@@ -202,11 +238,37 @@ const initialState: ProjectsState = {
         en: "html & css",
       },
       _id: "678d73e7b2e400df0cb5f27c",
-      projectURL: "https://criativo-website-rho.vercel.app/",
+      projectURL: "https://criativitio-portofolio.vercel.app/",
       projectGithubURL: "https://github.com/YousiefSameh/CriativoWebsite",
       createdAt: "2025-01-19T21:51:35.587Z",
       updatedAt: "2025-01-19T21:51:35.587Z",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      technologies: "hello world",
+    },
+    {
+      projectLang: {
+        ar: "ar",
+        en: "en",
+      },
+      projectTitle: {
+        ar: "بورتفوليو بتحكم في التصميم",
+        en: "Portfolio with control in design",
+      },
+      projectDescription: {
+        ar: "قالب بورتفوليو أنيق وعصري لعرض الأعمال والمهارات بشكل احترافي..",
+        en: "A sleek and modern portfolio template for showcasing work and skills professionally.",
+      },
+      projectImage:
+        "https://66b85c98712ea1fb5dd763f2--friendly-bonbon-d2fb73.netlify.app/images/Portofolio%20Templet.WebP",
+      category: {
+        ar: "html & css",
+        en: "html & css",
+      },
+      _id: "678d73e7b2e400df0cb5f27c",
+      projectURL: "https://portofolio-templet.vercel.app/",
+      projectGithubURL: "https://github.com/YousiefSameh/CriativoWebsite",
+      createdAt: "2025-01-19T21:51:35.587Z",
+      updatedAt: "2025-01-19T21:51:35.587Z",
+      technologies: "hello world",
     },
   ],
   loading: "idle",

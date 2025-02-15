@@ -7,6 +7,7 @@ const EditService = () => {
 		<div className="min-h-screen bg-dark-color text-light-color flex">
 			{/* Sidebar */}
 			<Sidebar />
+
 			{/* Main Content */}
 			<div className="container mx-auto flex-1 p-8">
 				<div className="flex items-center justify-between">
@@ -25,7 +26,7 @@ const EditService = () => {
 							<input
 								type="text"
 								name="titleAr"
-								value={formData.titleAr}
+								value={formData.title.ar}
 								onChange={handleChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
@@ -39,7 +40,7 @@ const EditService = () => {
 							<input
 								type="text"
 								name="titleEn"
-								value={formData.titleEn}
+								value={formData.title.en}
 								onChange={handleChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
@@ -52,7 +53,7 @@ const EditService = () => {
 							</label>
 							<textarea
 								name="descriptionAr"
-								value={formData.descriptionAr}
+								value={formData.description.ar}
 								onChange={handleChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"
@@ -65,7 +66,7 @@ const EditService = () => {
 							</label>
 							<textarea
 								name="descriptionEn"
-								value={formData.descriptionEn}
+								value={formData.description.ar}
 								onChange={handleChange}
 								required
 								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-main-color focus:border-main-color"

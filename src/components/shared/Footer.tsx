@@ -23,6 +23,7 @@ const Footer = () => {
             <p className="dark:text-white text-black text-sm">
               {t("footer.companyDescription")}
             </p>
+            <button>{t("terms")}</button>
           </div>
           <div className="social-media flex items-center gap-8 mt-5">
             <a
@@ -49,9 +50,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="col dark:text-white text-black">
-          <h4 className="text-xl font-bold mb-3">
-            {t("footer.quickLinks")}
-          </h4>
+          <h4 className="text-xl font-bold mb-3">{t("footer.quickLinks")}</h4>
           <ul className="flex flex-col gap-3">
             <li className="hover:-translate-x-1 transition-all">
               <a href="#" className="hover:text-main-color transition-all">
@@ -81,9 +80,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="col dark:text-white text-black">
-          <h4 className="text-xl font-bold mb-3">
-            {t("footer.contactUs")}
-          </h4>
+          <h4 className="text-xl font-bold mb-3">{t("footer.contactUs")}</h4>
           <ul className="flex flex-col gap-3">
             <li className="hover:-translate-x-1 transition-all">
               <a
