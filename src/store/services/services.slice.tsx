@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IServices, TLoading } from "@customTypes/index";
+import { IServices, isString, TLoading } from "@customTypes/index";
+import actGetServices from "./act/actGetServices";
+import actAddService from "./act/actAddService";
+import { actDeleteService } from "./act/actDeleteService";
+import actEditService from "./act/actEditService";
 
 interface ServicesState {
 	services: IServices[];
@@ -8,50 +12,7 @@ interface ServicesState {
 }
 
 const initialState: ServicesState = {
-	services: [
-		{
-			id: 0,
-			icon: "https://placehold.co/600x400",
-			title: "تصميم المواقع الإلكترونية",
-			description:
-				"موقعك الإلكتروني يُعد الوسيلة المثلى لعرض أفكارك ومنتجاتك والتحدث عنك. لتحقيق ذلك، يجب أن يتميز تصميمه بالجاذبية والسهولة لتوفير تجربة مميزة",
-		},
-		{
-			id: 1,
-			icon: "https://placehold.co/600x400",
-			title: "بناء مواقع ذات منطق برمجي",
-			description:
-				"إذا كنت بحاجة إلى موقع ديناميكي يتفاعل مع المستخدمين ويعتمد على منطق برمجي متقدم، فنحن نقدم حلولًا برمجية متكاملة لضمان أداء متميز وتجربة مستخدم سلسة.",
-		},
-		{
-			id: 2,
-			icon: "https://placehold.co/600x400",
-			title: "موقع بتصميم متجاوب",
-			description:
-				"نضمن لك تصميماً متجاوباً يعمل بسلاسة على جميع الأجهزة، مما يوفر تجربة مستخدم مثالية سواء على الهواتف الذكية، الأجهزة اللوحية، أو شاشات الكمبيوتر..",
-		},
-		{
-			id: 3,
-			icon: "https://placehold.co/600x400",
-			title: "نبني موقعك من التصميم للدومين",
-			description:
-				"نقدم لك حلاً متكاملاً يشمل تصميم الموقع، تطويره، وربطه بالدومين، لنضمن لك حضوراً رقمياً قوياً يعكس هويتك بأفضل صورة...",
-		},
-		{
-			id: 4,
-			icon: "https://placehold.co/600x400",
-			title: "مساعدتك في التخطيط لموقعك",
-			description:
-				"نساعدك في وضع خطة واضحة لموقعك الإلكتروني، بدءًا من تحديد الأهداف والمتطلبات وصولًا إلى التصميم والتنفيذ، لضمان نجاح مشروعك الرقمي....",
-		},
-		{
-			id: 5,
-			icon: "https://placehold.co/600x400",
-			title: "نستطيع تنفيذ جميع أنواع المواقع",
-			description:
-				"نقدم لك حلولًا مخصصة لتنفيذ جميع أنواع المواقع الإلكترونية، سواء كانت مواقع شخصية، تجارية، أو حتى معقدة بتقنيات متقدمة، مع ضمان الجودة والأداء المتميز.",
-		},
-	],
+	services: [],
 	loading: "idle",
 	error: null,
 };
@@ -60,6 +21,77 @@ const servicesSlice = createSlice({
 	name: "services",
 	initialState,
 	reducers: {},
+	extraReducers: (builder) => {
+		// Get Services
+		builder.
+		addCase(actGetServices.pending, (state) => {
+			state.loading = "pending";
+			state.error = null;
+		})
+		.addCase(actGetServices.fulfilled, (state, action) => {
+			state.loading = "succeeded";
+			state.services = action.payload;
+		})
+		.addCase(actGetServices.rejected, (state, action) => {
+			state.loading = "failed";
+			if (isString(action.payload)) {
+				state.error = action.payload;
+			}
+		})
+		// Add Service
+		builder
+		.addCase(actAddService.pending, (state) => {
+			state.loading = "pending";
+			state.error = null;
+		})
+		.addCase(actAddService.fulfilled, (state, action) => {
+			state.loading = "succeeded";
+			if (action.payload._id) {
+				state.services.push(action.payload as unknown as IServices);
+			}
+		})
+		.addCase(actAddService.rejected, (state, action) => {
+			state.loading = "failed";
+			if (isString(action.payload)) {
+				state.error = action.payload;
+			}
+		})
+		// Edit Service
+		builder
+		.addCase(actEditService.pending, (state) => {
+			state.loading = "pending";
+			state.error = null;
+		})
+		.addCase(actEditService.fulfilled, (state, action) => {
+			state.loading = "succeeded";
+			const index = state.services.findIndex((service) => service._id === action.payload._id);
+			if (index !== -1) {
+				state.services[index] = action.payload;
+			}
+		})
+		.addCase(actEditService.rejected, (state, action) => {
+			state.loading = "failed";
+			if (isString(action.payload)) {
+				state.error = action.payload;
+			}
+		})
+		// Delete Service
+		builder
+		.addCase(actDeleteService.pending, (state) => {
+			state.loading = "pending";
+			state.error = null;
+		})
+		.addCase(actDeleteService.fulfilled, (state, action) => {
+			state.loading = "succeeded";
+			state.services = state.services.filter((service) => service._id !== action.payload);
+		})
+		.addCase(actDeleteService.rejected, (state, action) => {
+			state.loading = "failed";
+			if (isString(action.payload)) {
+				state.error = action.payload;
+			}
+		});
+	}
 });
 
 export default servicesSlice.reducer;

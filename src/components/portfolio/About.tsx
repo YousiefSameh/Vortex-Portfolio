@@ -12,12 +12,13 @@ const About = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
+        className="mb-8"
       >
         <Heading title={t('about.title')} subtitle={t('about.subtitle')} />
       </motion.div>
-      <div className="container mx-auto w-[90%] flex flex-col md:flex-row items-center justify-center gap-10">
+      <div className="container mx-auto w-[90%] flex flex-col lg:flex-row items-center justify-center gap-10">
         <motion.div
-          className="img-content w-full md:w-1/2 flex justify-center items-center"
+          className="img-content w-full lg:w-1/2 flex justify-center items-center"
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1, transition: { duration: 1 } }}
           viewport={{ once: true }}
@@ -25,7 +26,7 @@ const About = () => {
           <img src={about} alt={t('about.title')} className="w-[80%]" />
         </motion.div>
         <motion.div
-          className="text-content w-full md:w-[60%]"
+          className="text-content w-full lg:w-[60%]"
           initial={{ x: "-100%", opacity: 0 }}
           whileInView={{
             x: 0,
@@ -34,10 +35,10 @@ const About = () => {
           }}
           viewport={{ once: true }}
         >
-          <h1 className="title text-main-color text-3xl md:text-5xl font-bold">
+          <h1 className="title text-main-color text-3xl lg:text-5xl font-bold">
             {t('about.whyVortex')}
           </h1>
-          <p className="description text-black font-semibold dark:font-normal dark:text-white w-full md:text-lg text-sm mt-2 leading-loose">
+          <p className="description text-black font-semibold dark:font-normal dark:text-white w-full lg:text-lg text-sm mt-2 leading-loose">
             {t('about.description')}
           </p>
           <button className="primary-btn mt-4">

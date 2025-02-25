@@ -1,13 +1,14 @@
 import { useTranslation } from "react-i18next";
 import { useState, useRef } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import API from "@services/api.services";
 
 interface useHeaderProps {
   darkMood: boolean;
   setDarkMood: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const useHeader = ({darkMood, setDarkMood}: useHeaderProps) => {
+const useHeader = ({ darkMood, setDarkMood }: useHeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation("header");
 
@@ -33,9 +34,13 @@ const useHeader = ({darkMood, setDarkMood}: useHeaderProps) => {
     }
   });
 
-  // تغيير اللغة عند اختيار لغة جديدة
-  const changeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeLanguage = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const language = event.target.value;
+    try {
+      await API.get(`/lang/change-lang/${language}`);
+    } catch (error) {
+      console.error("Error changing language on backend:", error);
+    }
     i18n.changeLanguage(language);
     if (language === "ar") {
       document.body.dir = "rtl";
@@ -43,7 +48,8 @@ const useHeader = ({darkMood, setDarkMood}: useHeaderProps) => {
       document.body.dir = "ltr";
     }
   };
-  return {t, i18n, toggleDarkMode, toggleMenu, isMenuOpen, hidden, changeLanguage}
-}
 
-export default useHeader
+  return { t, i18n, toggleDarkMode, toggleMenu, isMenuOpen, hidden, changeLanguage };
+};
+
+export default useHeader;
